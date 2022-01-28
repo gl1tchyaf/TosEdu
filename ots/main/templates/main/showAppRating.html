@@ -1,0 +1,68 @@
+<html>
+<body style="background-image: url('/static/images/bg.jpg')">
+<a href="../"><img src="/static/home/img/back.png" height="30px" width="30px"></a>
+<br><br><br><br><br><br><br>
+<h1 align="center">App Rating </h1>
+  </div>
+                        {% for appReview in appReview %}
+						<table align="center" border="0" cellspacing="0" cellpadding="10" class="rcorners2" >
+							<tr >
+								<td width="200">
+									{% for profile in profile %}
+									{% ifequal profile.user appReview.user %}
+									{% if profile.user_image %}
+                                    <img src="{{ profile.user_image.url }}" alt="Error" height="200px" width="200px">
+                                    {% endif %}
+									{% ifequal profile.user_image None %}
+									<img src="/static/user.png" alt="Error" height="200px" width="200px">
+									{% endifequal %}
+									{% endifequal %}
+									{% endfor %}
+								</td>
+									<td width="500" >
+										<h4>{{ appReview.user }}</h4>
+										{% ifequal appReview.rate 5 %}
+										<img src="/static/offer/5star.png" width="200px" height="50px">
+										{% endifequal %}
+										{% ifequal appReview.rate 4 %}
+										<img src="/static/offer/4star.png" width="200px" height="50px">
+										{% endifequal %}
+										{% ifequal appReview.rate 3 %}
+										<img src="/static/offer/3star.png" width="200px" height="50px">
+										{% endifequal %}
+										{% ifequal appReview.rate 2 %}
+										<img src="/static/offer/2star.png" width="200px" height="50px">
+										{% endifequal %}
+										{% ifequal appReview.rate 1 %}
+										<img src="/static/offer/1star.png" width="200px" height="50px">
+										{% endifequal %}
+                                	<h4> {{ appReview.comment }}</h4>
+							</td>
+								<td VALIGN=TOP width="60" style="text-align:center">
+									{% ifequal user appReview.user %}
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'articles:deleteAppRating' appReview.id %}">
+                                  <img src="/static/delete-circle-icon.png" height="30px" width="30px">
+										{% endifequal %}
+                                </a>
+								</td>
+                                <br>
+							</tr>
+						</table>
+
+                        {% endfor %}
+
+                    </div>
+
+					<h3 align="center"><a href="{% url 'articles:appRating' %}"><img src="/static/writeareview.png"></a></h3>
+</div>
+</body>
+<style>
+th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: #96D4D4;
+}
+</style>
+</html>
