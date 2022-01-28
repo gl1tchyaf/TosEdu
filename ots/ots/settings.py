@@ -115,23 +115,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.linkedin.LinkedinOAuth2',
-
-    'social_core.backends.facebook.FacebookOAuth2',
-
-    'social_core.backends.google.GoogleOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-SOCIAL_AUTH_FACEBOOK_KEY = '599690491194853'
-SOCIAL_AUTH_FACEBOOK_SECRET = '7b52a01483057522ec2eb7d19812eadb'
-
-SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '860lai46b4mepo'
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'lrR9iQdMQQBG8eJO'
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '136282293117-mr7hn3mpkdinsdplr24imqmiten3jr4n'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
 LOGIN_REDIRECT_URL = '/main/'
 
