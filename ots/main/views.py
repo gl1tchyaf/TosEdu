@@ -45,10 +45,6 @@ def contact(request):
         return render(request, 'main/contact.html')
 
 
-
-
-
-
 @login_required(login_url="/account/login/")
 def hotel_bookingPdf(request):
     buf = io.BytesIO()
@@ -107,3 +103,11 @@ def hotel_bookingPdf(request):
     buf.seek(0)
 
     return FileResponse(buf, as_attachment=True, filename='room.pdf')
+
+
+def classAndSubjects(request):
+    classAndSubjects.classInput = request.POST.get('class-Input')
+    classAndSubjects.subjectInput = request.POST.get('subject-Input')
+    print(classAndSubjects.classInput)
+    print(classAndSubjects.subjectInput)
+    return render(request, 'main/classAndSubjects.html')
