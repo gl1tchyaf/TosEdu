@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Your canvas
+{% for canvass in canvass %}
+{% ifequal canvass.user request.user %}
+<h1>Question:</h1>
+<h4>{{ canvass.questions.scenario }}</h4>
+<h4>{{ canvass.questions.ques_img }}</h4>
+<h4>{{ canvass.questions.q_a }}</h4>
+<h4>{{ canvass.questions.q_b }}</h4>
+<h4>{{ canvass.questions.q_c }}</h4>
+<h4>{{ canvass.questions.q_d }}</h4>
+{% endifequal %}
+{% endfor %}
+</body>
+</html>

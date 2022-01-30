@@ -60,7 +60,7 @@ class questions(models.Model):
     q_d = models.CharField(max_length=300, blank=True)
 
 
-class canvas(models.Model):
+class usercanvas(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
     questions = models.ForeignKey(questions, default=None, on_delete=models.DO_NOTHING)
 

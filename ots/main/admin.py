@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import questions, canvas
+from .models import questions, usercanvas
 
 admin.site.register(questions)
-admin.site.register(canvas)
+admin.site.register(usercanvas)
