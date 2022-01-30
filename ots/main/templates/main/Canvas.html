@@ -9,12 +9,15 @@ Your canvas
 {% for canvass in canvass %}
 {% ifequal canvass.user request.user %}
 <h1>Question:</h1>
+{% if canvass.questions.ques_img %}
+<img src="{{ canvass.questions.ques_img.url }}" alt="Error" height="200px" width="200px">
+{% endif %}
 <h4>{{ canvass.questions.scenario }}</h4>
-<h4>{{ canvass.questions.ques_img }}</h4>
 <h4>{{ canvass.questions.q_a }}</h4>
 <h4>{{ canvass.questions.q_b }}</h4>
 <h4>{{ canvass.questions.q_c }}</h4>
 <h4>{{ canvass.questions.q_d }}</h4>
+<a href="{% url 'articles:removequestion' canvass.id %}">Remove this question </a>
 {% endifequal %}
 {% endfor %}
 </body>

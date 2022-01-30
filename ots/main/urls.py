@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^contact/$', views.contact, name="contact"),
     url(r'^classAndSubjects/$', views.classAndSubjects, name="classAndSubjects"),
     url(r'^canvas/$', views.Canvas, name="canvas"),
+    path('removequestion/<str:pk>/$', views.removequestion, name="removequestion"),
 
 
 ]

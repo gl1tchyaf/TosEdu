@@ -108,6 +108,7 @@ def hotel_bookingPdf(request):
     return FileResponse(buf, as_attachment=True, filename='room.pdf')
 
 
+@login_required(login_url="/account/login/")
 def classAndSubjects(request):
     classAndSubjects.classInput = request.POST.get('class-Input')
     classAndSubjects.subjectInput = request.POST.get('subject-Input')
@@ -116,7 +117,15 @@ def classAndSubjects(request):
     return render(request, 'main/classAndSubjects.html')
 
 
+@login_required(login_url="/account/login/")
 def Canvas(request):
     canvass = usercanvas.objects.all()
     context = {'canvass': canvass}
     return render(request, "main/canvas.html", context)
+
+
+@login_required(login_url="/account/login/")
+def removequestion(request, pk):
+    instance = usercanvas.objects.get(id=pk)
+    instance.delete()
+    return redirect('articles:canvas')
