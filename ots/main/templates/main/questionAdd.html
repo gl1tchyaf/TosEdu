@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
         Questions
         {% for questionss in questionss %}
+    {% ifequal classinput questionss.classes %}
+    {% ifequal subjectinput questionss.subject %}
     <h1>Question:</h1>
         {% if questionss.ques_img %}
         <img src="{{ questionss.ques_img.url }}" alt="Error" height="200px" width="200px">
@@ -14,6 +16,8 @@
         <h4>{{ questionss.q_c }}</h4>
         <h4>{{ questionss.q_d }}</h4>
          <a href="{% url 'articles:addquestion' questionss.id %}">Add this question</a>
+    {% endifequal %}
+    {% endifequal %}
         {% endfor %}
 </head>
 <body>

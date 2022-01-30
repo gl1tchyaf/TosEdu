@@ -108,6 +108,8 @@ def hotel_bookingPdf(request):
 
 @login_required(login_url="/account/login/")
 def classAndSubjects(request):
+    classAndSubjects.classInput = ""
+    classAndSubjects.subjectInput = ""
     classAndSubjects.classInput = request.POST.get('class-Input')
     classAndSubjects.subjectInput = request.POST.get('subject-Input')
     return render(request, 'main/classAndSubjects.html')
@@ -130,7 +132,7 @@ def removequestion(request, pk):
 @login_required(login_url="/account/login/")
 def questionsss(request):
     questionss = questions.objects.all()
-    context = {'questionss': questionss}
+    context = {'questionss': questionss, 'classinput': int(classAndSubjects.classInput), 'subjectinput': classAndSubjects.subjectInput}
     return render(request, 'main/questionAdd.html', context)
 
 
