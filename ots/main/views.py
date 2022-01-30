@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 from django.urls import reverse
 
-from .models import usercanvas
+from .models import usercanvas, questions
 
 from django.contrib.auth.decorators import login_required
 
@@ -22,8 +22,6 @@ from . import forms
 
 @login_required(login_url="/accounts/login/")
 def homepage(request):
-    print(classAndSubjects.classInput)
-    print(classAndSubjects.subjectInput)
     return render(request, 'main/homepage.html')
 
 
@@ -112,8 +110,6 @@ def hotel_bookingPdf(request):
 def classAndSubjects(request):
     classAndSubjects.classInput = request.POST.get('class-Input')
     classAndSubjects.subjectInput = request.POST.get('subject-Input')
-    print(classAndSubjects.classInput)
-    print(classAndSubjects.subjectInput)
     return render(request, 'main/classAndSubjects.html')
 
 
@@ -128,4 +124,19 @@ def Canvas(request):
 def removequestion(request, pk):
     instance = usercanvas.objects.get(id=pk)
     instance.delete()
+    return redirect('articles:canvas')
+
+
+@login_required(login_url="/account/login/")
+def questionsss(request):
+    questionss = questions.objects.all()
+    context = {'questionss': questionss}
+    return render(request, 'main/questionAdd.html', context)
+
+
+@login_required(login_url="/account/login/")
+def addquestion(request, pk):
+    instance = questions.objects.get(id=pk)
+    instance2 = usercanvas.objects.create(user=request.user, questions=instance)
+    instance2.save()
     return redirect('articles:canvas')
