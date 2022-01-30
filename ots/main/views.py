@@ -34,7 +34,7 @@ def contact(request):
         message = request.POST['message-message']
 
         # send email
-        send_mail( 
+        send_mail(
             'Mail Sent By ' + message_name,  # subject
             '\n' + 'Senders Phone: ' + message_phone + '\nSenders Email: ' + message_email + ' \nMessage: ' + message,
             # message
@@ -55,7 +55,6 @@ def hotel_bookingPdf(request):
     textob.setFont("Helvetica", 14)
     logo = ImageReader('https://i.ibb.co/MPcBtHf/logo1.jpg')
 
-
     lines = [
         " ",
         " ",
@@ -72,19 +71,19 @@ def hotel_bookingPdf(request):
         " ",
         "        Full name: ",
         " ",
-        "        Email: " ,
+        "        Email: ",
         " ",
-        "        Phone: " ,
+        "        Phone: ",
         " ",
-        "        Check-in date: " ,
+        "        Check-in date: ",
         " ",
-        "        Check-out date: " ,
+        "        Check-out date: ",
         " ",
-        "        Hotel name: " ,
+        "        Hotel name: ",
         " ",
-        "        Total number of rooms: " ,
+        "        Total number of rooms: ",
         " ",
-        "        Room type: " ,
+        "        Room type: ",
         " ",
         " ",
         "",
@@ -117,7 +116,7 @@ def classAndSubjects(request):
 
 @login_required(login_url="/account/login/")
 def Canvas(request):
-    canvass = usercanvas.objects.all()
+    canvass = usercanvas.objects.filter(user=request.user)
     context = {'canvass': canvass}
     return render(request, "main/canvas.html", context)
 
@@ -131,8 +130,8 @@ def removequestion(request, pk):
 
 @login_required(login_url="/account/login/")
 def questionsss(request):
-    questionss = questions.objects.all()
-    context = {'questionss': questionss, 'classinput': int(classAndSubjects.classInput), 'subjectinput': classAndSubjects.subjectInput}
+    questionss = questions.objects.filter(classes=int(classAndSubjects.classInput), subject=classAndSubjects.subjectInput)
+    context = {'questionss': questionss}
     return render(request, 'main/questionAdd.html', context)
 
 
