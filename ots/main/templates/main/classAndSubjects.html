@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <form class="jotform-form probootstrap-form" method="post" name="form_213521348385456" id="213521348385456" accept-charset="utf-8" autocomplete="on">
+	{% csrf_token %}
+    Select Class
+    <div  class="form-input-wide" data-layout="half">
+           <select class="time-dropdown form-dropdown" name="class-Input" id="class-Input">
+  						<option value="1">Class 1</option>
+ 						 <option value="2">Class 2</option>
+ 						 <option value="3">Class 3</option>
+						 <option value="4">Class 4</option>
+  						<option value="5">Class 5</option>
+  						<option value="6">Class 6</option>
+  						<option value="7">Class 7</option>
+  						<option value="8">Class 8</option>
+  						<option value="9">Class 9</option>
+  						<option value="10">Class 10</option>
+    				</select>
+        </div>
+		Select Subject
+        <div class="form-input-wide" data-layout="half">
+           <select class="time-dropdown form-dropdown" name="subject-Input" id="subject-Input">
+  						<option value="bangla1">Bangla 1st Paper</option>
+ 						 <option value="bangla2">Bangla 2nd Paper</option>
+ 						 <option value="english1">English 1st Paper</option>
+						 <option value="english2">English 2nd Paper</option>
+  						<option value="math">Math</option>
+  						<option value="religion">Religion</option>
+  						<option value="ict">ICT</option>
+  						<option value="physics">Physics</option>
+  						<option value="chemistry">Chemistry</option>
+  						<option value="biology">Biology</option>
+  						<option value="highermath">Higher Math</option>
+  						<option value="accounting">Accounting</option>
+  						<option value="finance">Finance</option>
+  						<option value="business">Business Entrepreneurship</option>
+  						<option value="agriculture">Agricultural Studies</option>
+  						<option value="gscinece">General Science</option>
+  						<option value="bgs">Bangladesh and Global Studies</option>
+    				</select>
+        </div>
+         <button type="submit" class="form-submit-button submit-button jf-form-buttons">
+              Submit
+            </button>
+    </form>
+
+	<a href="{% url 'articles:canvas' %}">Accept and go to canvas</a>
+
+</head>
+<body>
+
+</body>
+</html>
