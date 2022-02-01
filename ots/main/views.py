@@ -148,4 +148,27 @@ def editquestion(request, pk):
     instance = usercanvas.objects.get(id=pk)
     context = {}
     context['editCanvas'] = instance
+
+    scenario = request.POST.get('canv-scenario')
+    qa = request.POST.get('canv-qa')
+    qb = request.POST.get('canv-qb')
+    qc = request.POST.get('canv-qc')
+    qd = request.POST.get('canv-qd')
+
+    if scenario is not None and scenario != '':
+        instance.scenario = scenario
+
+    if qa is not None and qa != '':
+        instance.q_a = qa
+
+    if qb is not None and qb != '':
+        instance.q_b = qb
+
+    if qc is not None and qc != '':
+        instance.q_c = qc
+
+    if qd is not None and qd != '':
+        instance.q_d = qd
+
+    instance.save()
     return render(request, 'main/editQuestion.html', context)

@@ -16,8 +16,9 @@ Your canvas
 <h4>{{ canvass.q_b }}</h4>
 <h4>{{ canvass.q_c }}</h4>
 <h4>{{ canvass.q_d }}</h4>
+<a href="{% url 'articles:editquestion' canvass.id %}">Edit this question </a> <br>
 <a href="{% url 'articles:removequestion' canvass.id %}">Remove this question </a>
-<a href="{% url 'articles:editquestion' canvass.id %}">Edit this question </a>
+
 {% endfor %}
 <br>
 <br>
