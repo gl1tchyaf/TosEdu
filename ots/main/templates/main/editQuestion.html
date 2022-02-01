@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<form method="post" autocomplete="on" enctype="multipart/form-data">
+                                        {% csrf_token %}
+<h4><textarea rows="5" cols="100" name="canv-scenario">{{ editCanvas.scenario }}</textarea></h4>
+<h4><textarea rows="2" cols="100" name="canv-qa">{{ editCanvas.q_a }}</textarea></h4>
+<h4><textarea rows="2" cols="100" name="canv-qb">{{ editCanvas.q_b }}</textarea></h4>
+<h4><textarea rows="2" cols="100" name="canv-qc">{{ editCanvas.q_c }}</textarea></h4>
+<h4><textarea rows="2" cols="100" name="canv-qd">{{ editCanvas.q_d }}</textarea></h4>
+    <div class="col-sm-9 text-secondary">
+                                  <button type="submit" class="btn btn-primary px-4">Submit</button>
+								</div>
+</form>
+<h1><a href="{% url 'articles:canvas'%}">Go back to canvas</a> </h1>
+</body>
+</html>
