@@ -8,15 +8,16 @@
 Your canvas
 {% for canvass in canvass %}
 <h1>Question:</h1>
-{% if canvass.questions.ques_img %}
-<img src="{{ canvass.questions.ques_img.url }}" alt="Error" height="200px" width="200px">
+{% if canvass.ques_img %}
+<img src="{{ canvass.ques_img.url }}" alt="Error" height="200px" width="200px">
 {% endif %}
-<h4>{{ canvass.questions.scenario }}</h4>
-<h4>{{ canvass.questions.q_a }}</h4>
-<h4>{{ canvass.questions.q_b }}</h4>
-<h4>{{ canvass.questions.q_c }}</h4>
-<h4>{{ canvass.questions.q_d }}</h4>
+<h4>{{ canvass.scenario }}</h4>
+<h4>{{ canvass.q_a }}</h4>
+<h4>{{ canvass.q_b }}</h4>
+<h4>{{ canvass.q_c }}</h4>
+<h4>{{ canvass.q_d }}</h4>
 <a href="{% url 'articles:removequestion' canvass.id %}">Remove this question </a>
+<a href="{% url 'articles:editquestion' canvass.id %}">Edit this question </a>
 {% endfor %}
 <br>
 <br>

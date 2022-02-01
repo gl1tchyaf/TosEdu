@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^canvas/$', views.Canvas, name="canvas"),
     url(r'^questions/$', views.questionsss, name="questions"),
     path('removequestion/<str:pk>/$', views.removequestion, name="removequestion"),
+    path('editquestion/<str:pk>/$', views.editquestion, name="editquestion"),
     path('addquestion/<str:pk>/$', views.addquestion, name="addquestion"),
 
 

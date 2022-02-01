@@ -138,6 +138,14 @@ def questionsss(request):
 @login_required(login_url="/account/login/")
 def addquestion(request, pk):
     instance = questions.objects.get(id=pk)
-    instance2 = usercanvas.objects.create(user=request.user, questions=instance)
+    instance2 = usercanvas.objects.create(user=request.user, scenario=instance.scenario, ques_img=instance.ques_img, q_a=instance.q_a, q_b=instance.q_b, q_c=instance.q_c, q_d=instance.q_d)
     instance2.save()
     return redirect('articles:canvas')
+
+
+@login_required(login_url="/account/login/")
+def editquestion(request, pk):
+    instance = usercanvas.objects.get(id=pk)
+    context = {}
+    context['editCanvas'] = instance
+    return render(request, 'main/editQuestion.html', context)

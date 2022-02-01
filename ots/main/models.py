@@ -62,5 +62,11 @@ class questions(models.Model):
 
 class usercanvas(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
-    questions = models.ForeignKey(questions, default=None, on_delete=models.DO_NOTHING)
+    scenario = models.TextField(max_length=3000, blank=True)
+    ques_img = models.ImageField(blank=True, null=True)
+    q_a = models.CharField(max_length=300, blank=True)
+    q_b = models.CharField(max_length=300, blank=True)
+    q_c = models.CharField(max_length=300, blank=True)
+    q_d = models.CharField(max_length=300, blank=True)
+
 
