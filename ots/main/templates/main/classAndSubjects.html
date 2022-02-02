@@ -7,6 +7,7 @@
     Select Class
     <div  class="form-input-wide" data-layout="half">
            <select class="time-dropdown form-dropdown" name="class-Input" id="class-Input">
+			   			<option value="">Select a Class</option>
   						<option value="1">Class 1</option>
  						 <option value="2">Class 2</option>
  						 <option value="3">Class 3</option>
@@ -22,7 +23,8 @@
 		Select Subject
         <div class="form-input-wide" data-layout="half">
            <select class="time-dropdown form-dropdown" name="subject-Input" id="subject-Input">
-  						<option value="bangla1">Bangla 1st Paper</option>
+  						<option value="">Select a Subject</option>
+			   			<option value="bangla1">Bangla 1st Paper</option>
  						 <option value="bangla2">Bangla 2nd Paper</option>
  						 <option value="english1">English 1st Paper</option>
 						 <option value="english2">English 2nd Paper</option>
@@ -45,8 +47,11 @@
               Submit
             </button>
     </form>
-
+	{% if classInput and subjectInput %}
+	<h1>Class selected {{ classInput }}</h1>
+	<h1>Subject selected {{ subjectInput }}</h1>
 	<a href="{% url 'articles:canvas' %}">Accept and go to canvas</a>
+	{% endif %}
 
 </head>
 <body>

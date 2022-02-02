@@ -111,7 +111,8 @@ def classAndSubjects(request):
     classAndSubjects.subjectInput = ""
     classAndSubjects.classInput = request.POST.get('class-Input')
     classAndSubjects.subjectInput = request.POST.get('subject-Input')
-    return render(request, 'main/classAndSubjects.html')
+    context = {'classInput': classAndSubjects.classInput, 'subjectInput': classAndSubjects.subjectInput}
+    return render(request, 'main/classAndSubjects.html', context)
 
 
 @login_required(login_url="/account/login/")
