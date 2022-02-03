@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>print</title>
 </head>
 <body>
 {% for canvass in canvass %}
@@ -15,14 +15,10 @@
 <h4>{{ canvass.q_b }}</h4>
 <h4>{{ canvass.q_c }}</h4>
 <h4>{{ canvass.q_d }}</h4>
-<a href="{% url 'articles:editquestion' canvass.id %}">Edit this question </a> <br>
-<a href="{% url 'articles:removequestion' canvass.id %}">Remove this question </a>
 
 {% endfor %}
+
+<button onclick="window.print()">Print</button>
 <br>
-<br>
-<br>
-<a href="{% url 'articles:questions' %}">Add a question</a>
-<a href="{% url 'articles:questionsGenerate' %}">Print Question</a>
 </body>
 </html>

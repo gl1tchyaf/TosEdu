@@ -3,7 +3,9 @@ from django.forms.widgets import Input
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
+from django.template.loader import get_template
 from django.urls import reverse
+from django.views import View
 
 from .models import usercanvas, questions
 
@@ -19,6 +21,9 @@ from reportlab.lib.utils import ImageReader
 from django.core.mail import send_mail
 from .permission import allowed_users
 from . import forms
+
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 
 
 @login_required(login_url="/accounts/login/")
@@ -54,46 +59,15 @@ def hotel_bookingPdf(request):
     c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
     textob = c.beginText()
     textob.setTextOrigin(inch, inch)
-    textob.setFont("Helvetica", 14)
+    pdfmetrics.registerFont(TTFont('Kalpurush', 'kalpurush.ttf'))
+    textob.setFont("Kalpurush", 14)
     logo = ImageReader('https://i.ibb.co/MPcBtHf/logo1.jpg')
 
-    lines = [
-        " ",
-        " ",
-        " ",
-        " ",
-        " ",
-        " ",
-
-        "                                     Welcome to Green Travel",
-        " ",
-        "                           Your Reservation confirmation is below",
-        " ",
-        " ",
-        " ",
-        "        Full name: ",
-        " ",
-        "        Email: ",
-        " ",
-        "        Phone: ",
-        " ",
-        "        Check-in date: ",
-        " ",
-        "        Check-out date: ",
-        " ",
-        "        Hotel name: ",
-        " ",
-        "        Total number of rooms: ",
-        " ",
-        "        Room type: ",
-        " ",
-        " ",
-        "",
-        "                               Thank you for using Green Travel",
-        "",
-        "                               All right reserved by Green Travel",
-
-    ]
+    canvasss = usercanvas.objects.all()
+    for canvasss in canvasss:
+        lines = [
+            canvasss.scenario
+        ]
 
     for line in lines:
         textob.textLine(line)
@@ -175,3 +149,10 @@ def editquestion(request, pk):
 
     instance.save()
     return render(request, 'main/editQuestion.html', context)
+
+
+@login_required(login_url="/account/login/")
+def questionsGenerate(request):
+    canvass = usercanvas.objects.filter(user=request.user)
+    context = {'canvass': canvass}
+    return render(request, 'main/QuestionGenerate.html', context)
