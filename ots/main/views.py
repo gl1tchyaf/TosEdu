@@ -163,10 +163,21 @@ def questionsGenerate(request):
 def questioninput(request):
     return render(request, 'main/QuestionInput.html')
 
+
 @login_required(login_url="/account/login/")
 @allowed_users(allowed_roles=['staff'])
 def bijoyinput(request):
-    return render(request, 'main/bijoyquestions.html')
+    form = forms.questionInputBijoy()
+    if request.method == 'POST':
+        form = forms.questionInputBijoy(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            url = reverse('articles:questioninput')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(url)
+    return render(request, 'main/bijoyquestions.html', {'form': form})
+
 
 @login_required(login_url="/account/login/")
 @allowed_users(allowed_roles=['staff'])
