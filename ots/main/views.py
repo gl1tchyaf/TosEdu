@@ -156,3 +156,28 @@ def questionsGenerate(request):
     canvass = usercanvas.objects.filter(user=request.user)
     context = {'canvass': canvass}
     return render(request, 'main/QuestionGenerate.html', context)
+
+
+@login_required(login_url="/account/login/")
+@allowed_users(allowed_roles=['staff'])
+def questioninput(request):
+    return render(request, 'main/QuestionInput.html')
+
+@login_required(login_url="/account/login/")
+@allowed_users(allowed_roles=['staff'])
+def bijoyinput(request):
+    return render(request, 'main/bijoyquestions.html')
+
+@login_required(login_url="/account/login/")
+@allowed_users(allowed_roles=['staff'])
+def unicodeinput(request):
+    form = forms.questionInput()
+    if request.method == 'POST':
+        form = forms.questionInput(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            url = reverse('articles:questioninput')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(url)
+    return render(request, 'main/unicodequestions.html', {'form': form})
