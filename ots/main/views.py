@@ -17,10 +17,12 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib.utils import ImageReader
 
 from django.core.mail import send_mail
+from .permission import allowed_users
 from . import forms
 
 
 @login_required(login_url="/accounts/login/")
+# @allowed_users(allowed_roles=['staff'])
 def homepage(request):
     return render(request, 'main/homepage.html')
 
