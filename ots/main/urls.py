@@ -17,7 +17,6 @@ urlpatterns = [
     path('removequestion/<str:pk>/$', views.removequestion, name="removequestion"),
     path('editquestion/<str:pk>/$', views.editquestion, name="editquestion"),
     path('addquestion/<str:pk>/$', views.addquestion, name="addquestion"),
-    url(r'^pdf/$', views.hotel_bookingPdf, name="pdf"),
     url(r'^questioninput/$', views.questioninput, name="questioninput"),
     url(r'^bijoyinput/$', views.bijoyinput, name="bijoyinput"),
     url(r'^unicodeinput/$', views.unicodeinput, name="unicodeinput"),

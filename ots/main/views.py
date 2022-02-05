@@ -11,19 +11,10 @@ from .models import usercanvas, questions
 
 from django.contrib.auth.decorators import login_required
 
-from django.http import FileResponse
-import io
-from reportlab.pdfgen import canvas
-from reportlab.lib.units import inch
-from reportlab.lib.pagesizes import letter
-from reportlab.lib.utils import ImageReader
-
 from django.core.mail import send_mail
 from .permission import allowed_users
 from . import forms
 
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
 from bijoytounicode import bijoy2unicode
 
 
@@ -52,34 +43,6 @@ def contact(request):
         return render(request, 'main/contact.html', {'message_name': message_name})
     else:
         return render(request, 'main/contact.html')
-
-
-@login_required(login_url="/account/login/")
-def hotel_bookingPdf(request):
-    buf = io.BytesIO()
-    c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
-    textob = c.beginText()
-    textob.setTextOrigin(inch, inch)
-    pdfmetrics.registerFont(TTFont('Kalpurush', 'kalpurush.ttf'))
-    textob.setFont("Kalpurush", 14)
-    logo = ImageReader('https://i.ibb.co/MPcBtHf/logo1.jpg')
-
-    canvasss = usercanvas.objects.all()
-    for canvasss in canvasss:
-        lines = [
-            canvasss.scenario
-        ]
-
-    for line in lines:
-        textob.textLine(line)
-
-    c.drawImage(logo, 170, 10, mask='auto', anchor='c')
-    c.drawText(textob)
-    c.showPage()
-    c.save()
-    buf.seek(0)
-
-    return FileResponse(buf, as_attachment=True, filename='room.pdf')
 
 
 @login_required(login_url="/account/login/")
