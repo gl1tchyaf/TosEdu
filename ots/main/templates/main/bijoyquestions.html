@@ -3,13 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script type="text/javascript" src="/static/converter/bijoy2uni.js"></script>
-    <script type="text/javascript" src="/static/converter/common.js"></script>
-    <script type="text/javascript" src="/static/converter/js1.js"></script>
-    <script type="text/javascript" src="/static/converter/js2.js"></script>
-    <script type="text/javascript" src="/static/converter/js3.js"></script>
-    <script type="text/javascript" src="/static/converter/js4.js"></script>
-    <script type="text/javascript" src="/static/converter/js5.js"></script>
 </head>
 <body>
 <form method="POST" id="register-form" class="register-form" enctype="multipart/form-data">
@@ -35,45 +28,8 @@
                         <div class="form-group">
                             <label class="u-label">Scenario</label>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<table width="90%" border="0" align="center" style="margin: auto;">
-        <tbody>
-            <tr>
-                <td width="100%" align="center">
-                    <table width="100%" border="0">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <input readonly="" type="hidden" name="CharsTyped" size="2" style="font-weight:bold; border: 0px solid #2D69AE; color:#808080; text-align:left;" value="0">
-                                        <input readonly="" type="hidden" name="WordsTyped" size="3" style="font-weight:bold; border: 1px solid #2D69AE; color:#808080; text-align:right;" value="0">
-                                        <input readonly="" type="hidden" name="CharsLeft" size="8" value="100000">
-                                        <input readonly="" type="hidden" name="WordsLeft" size="8" value="100000">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <div>
-                                        <textarea class="bijoy_textarea" id="CONVERTEDT" autofocus="autofocus" value="" placeholder="বিজয় কি-বোর্ডের লেখা এখানে পেস্ট করুন" cols="50" rows="5"></textarea>
-                                    </div><br>
-                                </td>
-                            </tr>
-							 <tr>
-                                <td align="center">
-                                    <div>
-                                        <textarea class="unicode_textarea" id="EDT" name="textarea" autofocus="autofocus" value="" placeholder="ইউনিকোড কি-বোর্ডের লেখা এখানে পেস্ট করুন" cols="50" rows="5"></textarea>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" height="60px" valign="middle">
-                                    <div class="convert_button_left">
-                                        <input onclick="ConvertFromTextArea(&#39;CONVERTEDT&#39;);" value="Convert" name="ConvertButton">
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+							<textarea name="scenario" placeholder="Type Bijoy Here" cols="50" rows="5"></textarea>
+
                         </div>
                         <div class="form-group">
                             <label class="u-label">Question Image</label>
@@ -81,179 +37,29 @@
 							{{form.ques_img}}
                         </div>
                         <div class="form-group">
-							<label class="u-label align" data-align="top">First Question</label>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<table width="90%" border="0" align="center" style="margin: auto;">
-        <tbody>
-            <tr>
-                <td width="100%" align="center">
-                    <table width="100%" border="0">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <input readonly="" type="hidden" name="CharsTyped" size="2" style="font-weight:bold; border: 0px solid #2D69AE; color:#808080; text-align:left;" value="0">
-                                        <input readonly="" type="hidden" name="WordsTyped" size="3" style="font-weight:bold; border: 1px solid #2D69AE; color:#808080; text-align:right;" value="0">
-                                        <input readonly="" type="hidden" name="CharsLeft" size="8" value="100000">
-                                        <input readonly="" type="hidden" name="WordsLeft" size="8" value="100000">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <div>
-                                        <textarea class="bijoy_textarea" id="CONVERTEDT2" autofocus="autofocus" value="" placeholder="বিজয় কি-বোর্ডের লেখা এখানে পেস্ট করুন" cols="50" rows="5"></textarea>
-                                    </div><br>
-                                </td>
-                            </tr>
-							 <tr>
-                                <td align="center">
-                                    <div>
-                                        <textarea class="unicode_textarea" id="EDT2" name="textarea" autofocus="autofocus" value="" placeholder="ইউনিকোড কি-বোর্ডের লেখা এখানে পেস্ট করুন" cols="50" rows="5"></textarea>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" height="60px" valign="middle">
-                                    <div class="convert_button_left">
-                                        <input onclick="ConvertFromTextArea2(&#39;CONVERTEDT2&#39;);" value="Convert" name="ConvertButton">
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                        </div>
-                            <div class="form-group">
-							<label class="u-label align" data-align="top">Second Question</label>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<table width="90%" border="0" align="center" style="margin: auto;">
-        <tbody>
-            <tr>
-                <td width="100%" align="center">
-                    <table width="100%" border="0">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <input readonly="" type="hidden" name="CharsTyped" size="2" style="font-weight:bold; border: 0px solid #2D69AE; color:#808080; text-align:left;" value="0">
-                                        <input readonly="" type="hidden" name="WordsTyped" size="3" style="font-weight:bold; border: 1px solid #2D69AE; color:#808080; text-align:right;" value="0">
-                                        <input readonly="" type="hidden" name="CharsLeft" size="8" value="100000">
-                                        <input readonly="" type="hidden" name="WordsLeft" size="8" value="100000">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <div>
-                                        <textarea class="bijoy_textarea" id="CONVERTEDT3" autofocus="autofocus" value="" placeholder="বিজয় কি-বোর্ডের লেখা এখানে পেস্ট করুন" cols="50" rows="5"></textarea>
-                                    </div><br>
-                                </td>
-                            </tr>
-							 <tr>
-                                <td align="center">
-                                    <div>
-                                        <textarea class="unicode_textarea" id="EDT3" name="textarea" autofocus="autofocus" value="" placeholder="ইউনিকোড কি-বোর্ডের লেখা এখানে পেস্ট করুন" cols="50" rows="5"></textarea>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" height="60px" valign="middle">
-                                    <div class="convert_button_left">
-                                        <input onclick="ConvertFromTextArea3(&#39;CONVERTEDT3&#39;);" value="Convert" name="ConvertButton">
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                        </div>
-                            <div class="form-group">
-							<label class="u-label align" data-align="top">Third Question</label>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<table width="90%" border="0" align="center" style="margin: auto;">
-        <tbody>
-            <tr>
-                <td width="100%" align="center">
-                    <table width="100%" border="0">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <input readonly="" type="hidden" name="CharsTyped" size="2" style="font-weight:bold; border: 0px solid #2D69AE; color:#808080; text-align:left;" value="0">
-                                        <input readonly="" type="hidden" name="WordsTyped" size="3" style="font-weight:bold; border: 1px solid #2D69AE; color:#808080; text-align:right;" value="0">
-                                        <input readonly="" type="hidden" name="CharsLeft" size="8" value="100000">
-                                        <input readonly="" type="hidden" name="WordsLeft" size="8" value="100000">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <div>
-                                        <textarea class="bijoy_textarea" id="CONVERTEDT4" autofocus="autofocus" value="" placeholder="বিজয় কি-বোর্ডের লেখা এখানে পেস্ট করুন" cols="50" rows="5"></textarea>
-                                    </div><br>
-                                </td>
-                            </tr>
-							 <tr>
-                                <td align="center">
-                                    <div>
-                                        <textarea class="unicode_textarea" id="EDT4" name="textarea" autofocus="autofocus" value="" placeholder="ইউনিকোড কি-বোর্ডের লেখা এখানে পেস্ট করুন" cols="50" rows="5"></textarea>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" height="60px" valign="middle">
-                                    <div class="convert_button_left">
-                                        <input onclick="ConvertFromTextArea4(&#39;CONVERTEDT4&#39;);" value="Convert" name="ConvertButton">
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                        </div>
-                            <div class="form-group">
-							<label class="u-label align" data-align="top">Fourth Question</label>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<table width="90%" border="0" align="center" style="margin: auto;">
-        <tbody>
-            <tr>
-                <td width="100%" align="center">
-                    <table width="100%" border="0">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <input readonly="" type="hidden" name="CharsTyped" size="2" style="font-weight:bold; border: 0px solid #2D69AE; color:#808080; text-align:left;" value="0">
-                                        <input readonly="" type="hidden" name="WordsTyped" size="3" style="font-weight:bold; border: 1px solid #2D69AE; color:#808080; text-align:right;" value="0">
-                                        <input readonly="" type="hidden" name="CharsLeft" size="8" value="100000">
-                                        <input readonly="" type="hidden" name="WordsLeft" size="8" value="100000">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <div>
-                                        <textarea class="bijoy_textarea" id="CONVERTEDT5" autofocus="autofocus" value="" placeholder="বিজয় কি-বোর্ডের লেখা এখানে পেস্ট করুন" cols="50" rows="5"></textarea>
-                                    </div><br>
-                                </td>
-                            </tr>
-							 <tr>
-                                <td align="center">
-                                    <div>
-                                        <textarea class="unicode_textarea" id="EDT5" name="textarea" autofocus="autofocus" value="" placeholder="ইউনিকোড কি-বোর্ডের লেখা এখানে পেস্ট করুন" cols="50" rows="5"></textarea>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" height="60px" valign="middle">
-                                    <div class="convert_button_left">
-                                        <input onclick="ConvertFromTextArea5(&#39;CONVERTEDT5&#39;);" value="Convert" name="ConvertButton">
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <label class="u-label">Scenario</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<textarea name="qa" placeholder="Type Bijoy Here" cols="30" rows="2"></textarea>
 
                         </div>
+                        <div class="form-group">
+                            <label class="u-label">Scenario</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<textarea name="qb" placeholder="Type Bijoy Here" cols="30" rows="2"></textarea>
 
+                        </div>
+                        <div class="form-group">
+                            <label class="u-label">Scenario</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<textarea name="qc" placeholder="Type Bijoy Here" cols="30" rows="2"></textarea>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="u-label">Scenario</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<textarea name="qd" placeholder="Type Bijoy Here" cols="30" rows="2"></textarea>
+
+                        </div>
 
                         <button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up">Submit</button>
 

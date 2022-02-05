@@ -24,6 +24,7 @@ from . import forms
 
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+from bijoytounicode import bijoy2unicode
 
 
 @login_required(login_url="/accounts/login/")
@@ -167,11 +168,31 @@ def questioninput(request):
 @login_required(login_url="/account/login/")
 @allowed_users(allowed_roles=['staff'])
 def bijoyinput(request):
+    scenario = request.POST.get('scenario')
+    qa = request.POST.get('qa')
+    qb = request.POST.get('qb')
+    qc = request.POST.get('qc')
+    qd = request.POST.get('qd')
+    if scenario is not None:
+        convertedScenario = bijoy2unicode(scenario)
+    if qa is not None:
+        convertedqa = bijoy2unicode(qa)
+    if qb is not None:
+        convertedqb = bijoy2unicode(qb)
+    if qc is not None:
+        convertedqc = bijoy2unicode(qc)
+    if qd is not None:
+        convertedqd = bijoy2unicode(qd)
     form = forms.questionInputBijoy()
     if request.method == 'POST':
         form = forms.questionInputBijoy(request.POST, request.FILES)
         if form.is_valid():
             instance = form.save(commit=False)
+            instance.scenario = convertedScenario
+            instance.q_a = convertedqa
+            instance.q_b = convertedqb
+            instance.q_c = convertedqc
+            instance.q_d = convertedqd
             instance.save()
             url = reverse('articles:questioninput')
             next = request.POST.get('next', '/')
