@@ -26,3 +26,9 @@ class questionInputBijoySelective(forms.ModelForm):
         fields = ['classes', 'subject', 'chapter', 'ques_img']
 
 
+class userInformation(forms.ModelForm):
+    class Meta:
+        model = models.userInformation
+        fields = ['institution']
+
+

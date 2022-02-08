@@ -1,13 +1,9 @@
-from PIL import Image
-from django.forms.widgets import Input
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.template import loader
-from django.template.loader import get_template
 from django.urls import reverse
 from django.views import View
 
-from .models import usercanvas, questions, selectiveQuestion, usercanvasSelective
+from .models import usercanvas, questions, selectiveQuestion, usercanvasSelective, userInformation
 
 from django.contrib.auth.decorators import login_required
 
@@ -21,7 +17,32 @@ from bijoytounicode import bijoy2unicode
 @login_required(login_url="/accounts/login/")
 # @allowed_users(allowed_roles=['staff'])
 def homepage(request):
-    return render(request, 'main/homepage.html')
+    try:
+        user = userInformation.objects.get(user=request.user)
+    except:
+        return redirect('articles:userInfo')
+    return render(request, 'main/homepage.html', {'user': user})
+
+
+@login_required(login_url="/account/login/")
+def userInfo(request):
+    try:
+        user = userInformation.objects.get(user=request.user)
+        if user is not None:
+            return redirect('articles:list')
+    except:
+        print("Stay here")
+    form = forms.userInformation()
+    if request.method == 'POST':
+        form = forms.userInformation(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            url = reverse('articles:list')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(url)
+    return render(request, 'main/updateInformation.html', {'form': form})
 
 
 @login_required(login_url="/account/login/")
@@ -169,8 +190,20 @@ def editquestionSelective(request, pk):
 
 @login_required(login_url="/account/login/")
 def questionsGenerate(request):
+    userInfo = userInformation.objects.get(user=request.user)
+    count = 0
     canvass = usercanvas.objects.filter(user=request.user)
+    for i in canvass:
+        count += 1
     canvassSelective = usercanvasSelective.objects.filter(user=request.user)
+    for i in canvassSelective:
+        count += 1
+    print(count)
+    if userInfo.point >= count:
+        userInfo.point = userInfo.point - count
+        userInfo.save()
+    else:
+        return redirect('articles:list')
     context = {'canvass': canvass, 'canvassSelective': canvassSelective}
     return render(request, 'main/QuestionGenerate.html', context)
 

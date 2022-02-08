@@ -90,3 +90,10 @@ class usercanvasSelective(models.Model):
     q_b = models.CharField(max_length=300, blank=True)
     q_c = models.CharField(max_length=300, blank=True)
     q_d = models.CharField(max_length=300, blank=True)
+
+
+class userInformation(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
+    institution = models.CharField(max_length=100, blank=True)
+    point = models.IntegerField(default=0)
+

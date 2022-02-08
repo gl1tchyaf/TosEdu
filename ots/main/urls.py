@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^unicodeinput/$', views.unicodeinput, name="unicodeinput"),
     url(r'^unicodeinputSelective/$', views.unicodeinputSelective, name="unicodeinputSelective"),
     url(r'^bijoyinputSelective/$', views.bijoyinputSelective, name="bijoyinputSelective"),
+    url(r'^userInfo/$', views.userInfo, name="userInfo"),
 ]

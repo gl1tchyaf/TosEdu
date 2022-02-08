@@ -3,7 +3,8 @@
 
 </title>
 <body>
-    <h1>GGWP</h1>
+    <h1>Your Institute: {{ user.institution }}</h1>
+    <h1>Your Point: {{ user.point }}</h1>
     <a href="{% url 'articles:canvas' %}">Question Maker</a>
 <a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                                         {% csrf_token %}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" id="register-form" class="register-form">
+					{% csrf_token %}
+                        <h2 class="form-title">Add a question</h2>
+
+						<div class="form-group">
+                            <label class="u-label">Enter you Institution</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.institution}}
+                        </div>
+
+                        <button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up">Submit</button>
+
+                    </form>
+</body>
+</html>
