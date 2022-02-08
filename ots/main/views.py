@@ -7,7 +7,7 @@ from django.template.loader import get_template
 from django.urls import reverse
 from django.views import View
 
-from .models import usercanvas, questions, selectiveQuestion
+from .models import usercanvas, questions, selectiveQuestion, usercanvasSelective
 
 from django.contrib.auth.decorators import login_required
 
@@ -58,13 +58,21 @@ def classAndSubjects(request):
 @login_required(login_url="/account/login/")
 def Canvas(request):
     canvass = usercanvas.objects.filter(user=request.user)
-    context = {'canvass': canvass}
+    canvass1 = usercanvasSelective.objects.filter(user=request.user)
+    context = {'canvass': canvass, 'canvass1': canvass1}
     return render(request, "main/canvas.html", context)
 
 
 @login_required(login_url="/account/login/")
 def removequestion(request, pk):
     instance = usercanvas.objects.get(id=pk)
+    instance.delete()
+    return redirect('articles:canvas')
+
+
+@login_required(login_url="/account/login/")
+def removequestionSelective(request, pk):
+    instance = usercanvasSelective.objects.get(id=pk)
     instance.delete()
     return redirect('articles:canvas')
 
@@ -91,7 +99,7 @@ def addquestion(request, pk):
 @login_required(login_url="/account/login/")
 def addquestionSelective(request, pk):
     instance = selectiveQuestion.objects.get(id=pk)
-    instance2 = usercanvas.objects.create(user=request.user, scenario=instance.scenario, ques_img=instance.ques_img,
+    instance2 = usercanvasSelective.objects.create(user=request.user, scenario=instance.scenario, ques_img=instance.ques_img,
                                           q_a=instance.q_a, q_b=instance.q_b, q_c=instance.q_c, q_d=instance.q_d)
     instance2.save()
     return redirect('articles:canvas')
@@ -129,9 +137,41 @@ def editquestion(request, pk):
 
 
 @login_required(login_url="/account/login/")
+def editquestionSelective(request, pk):
+    instance = usercanvasSelective.objects.get(id=pk)
+    context = {}
+    context['editCanvas'] = instance
+
+    scenario = request.POST.get('canv-scenario')
+    qa = request.POST.get('canv-qa')
+    qb = request.POST.get('canv-qb')
+    qc = request.POST.get('canv-qc')
+    qd = request.POST.get('canv-qd')
+
+    if scenario is not None and scenario != '':
+        instance.scenario = scenario
+
+    if qa is not None and qa != '':
+        instance.q_a = qa
+
+    if qb is not None and qb != '':
+        instance.q_b = qb
+
+    if qc is not None and qc != '':
+        instance.q_c = qc
+
+    if qd is not None and qd != '':
+        instance.q_d = qd
+
+    instance.save()
+    return render(request, 'main/editQuestion.html', context)
+
+
+@login_required(login_url="/account/login/")
 def questionsGenerate(request):
     canvass = usercanvas.objects.filter(user=request.user)
-    context = {'canvass': canvass}
+    canvassSelective = usercanvasSelective.objects.filter(user=request.user)
+    context = {'canvass': canvass, 'canvassSelective': canvassSelective}
     return render(request, 'main/QuestionGenerate.html', context)
 
 

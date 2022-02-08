@@ -23,10 +23,12 @@
         <img src="{{ questionsSelective.ques_img.url }}" alt="Error" height="200px" width="200px">
         {% endif %}
         <h4>{{ questionsSelective.scenario }}</h4>
-        <h4>{{ questionsSelective.q_a }}</h4>
-        <h4>{{ questionsSelective.q_b }}</h4>
-        <h4>{{ questionsSelective.q_c }}</h4>
-        <h4>{{ questionsSelective.q_d }}</h4>
+    <ul style="list-style-type:circle;">
+        <li>{{ questionsSelective.q_a }}</li>
+        <li>{{ questionsSelective.q_b }}</li>
+        <li>{{ questionsSelective.q_c }}</li>
+        <li>{{ questionsSelective.q_d }}</li>
+    </ul>
          <a href="{% url 'articles:addquestionSelective' questionsSelective.id %}">Add this question</a>
         {% endfor %}
 </head>

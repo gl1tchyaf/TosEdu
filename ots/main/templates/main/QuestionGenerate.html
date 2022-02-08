@@ -17,6 +17,19 @@
 <h4>{{ canvass.q_d }}</h4>
 
 {% endfor %}
+{% for canvassSelective in canvassSelective %}
+<h1>Question:</h1>
+{% if canvassSelective.ques_img %}
+<img src="{{ canvassSelective.ques_img.url }}" alt="Error" height="200px" width="200px">
+{% endif %}
+<h4>{{ canvassSelective.scenario }}</h4>
+<ul style="list-style-type:circle;">
+<li>{{ canvassSelective.q_a }}</li>
+<li>{{ canvassSelective.q_b }}</li>
+<li>{{ canvassSelective.q_c }}</li>
+<li>{{ canvassSelective.q_d }}</li>
+</ul>
+{% endfor %}
 
 <button id="togglee" onclick="action(),window.print(), timeFunction()">Print</button>
 <br>

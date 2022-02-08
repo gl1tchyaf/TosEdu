@@ -80,3 +80,13 @@ class selectiveQuestion(models.Model):
     q_b = models.CharField(max_length=300, blank=True)
     q_c = models.CharField(max_length=300, blank=True)
     q_d = models.CharField(max_length=300, blank=True)
+
+
+class usercanvasSelective(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
+    scenario = models.TextField(max_length=3000, blank=True)
+    ques_img = models.ImageField(blank=True, null=True)
+    q_a = models.CharField(max_length=300, blank=True)
+    q_b = models.CharField(max_length=300, blank=True)
+    q_c = models.CharField(max_length=300, blank=True)
+    q_d = models.CharField(max_length=300, blank=True)

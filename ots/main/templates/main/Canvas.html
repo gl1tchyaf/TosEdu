@@ -3,6 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style type="text/css" media="print">
+    @page
+    {
+        size:  auto;   /* auto is the initial value */
+        margin: 0mm;  /* this affects the margin in the printer settings */
+    }
+
+    html
+    {
+        background-color: #FFFFFF;
+        margin: 0px;  /* this affects the margin on the html before sending to printer */
+    }
+
+    body
+    {
+        border: solid 1px blue ;
+        margin: 5mm 5mm 5mm 5mm; /* margin you want for the content */
+    }
+    </style>
 </head>
 <body>
 {% for canvass in canvass %}
@@ -20,9 +39,27 @@
 
 {% endfor %}
 <br>
+{% for canvass1 in canvass1 %}
+<h1>Question:</h1>
+{% if canvass1.ques_img %}
+<img src="{{ canvass1.ques_img.url }}" alt="Error" height="200px" width="200px">
+{% endif %}
+<h4>{{ canvass1.scenario }}</h4>
+<ul style="list-style-type:circle;">
+    <li>{{ canvass1.q_a }}</li>
+    <li>{{ canvass1.q_b }}</li>
+    <li>{{ canvass1.q_c }}</li>
+    <li>{{ canvass1.q_d }}</li>
+</ul>
+<a href="{% url 'articles:editquestionSelective' canvass1.id %}">Edit this question </a> <br>
+<a href="{% url 'articles:removequestionSelective' canvass1.id %}">Remove this question </a>
+
+{% endfor %}
+<br>
 <br>
 <br>
 <a href="{% url 'articles:classAndSubjects' %}">Add a question</a>
 <a href="{% url 'articles:questionsGenerate' %}">Print Question</a>
 </body>
+
 </html>
