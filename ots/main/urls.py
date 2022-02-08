@@ -17,7 +17,10 @@ urlpatterns = [
     path('removequestion/<str:pk>/$', views.removequestion, name="removequestion"),
     path('editquestion/<str:pk>/$', views.editquestion, name="editquestion"),
     path('addquestion/<str:pk>/$', views.addquestion, name="addquestion"),
+    path('addquestionSelective/<str:pk>/$', views.addquestionSelective, name="addquestionSelective"),
     url(r'^questioninput/$', views.questioninput, name="questioninput"),
     url(r'^bijoyinput/$', views.bijoyinput, name="bijoyinput"),
     url(r'^unicodeinput/$', views.unicodeinput, name="unicodeinput"),
+    url(r'^unicodeinputSelective/$', views.unicodeinputSelective, name="unicodeinputSelective"),
+    url(r'^bijoyinputSelective/$', views.bijoyinputSelective, name="bijoyinputSelective"),
 ]

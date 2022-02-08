@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" id="register-form" class="register-form" enctype="multipart/form-data">
+					{% csrf_token %}
+                        <h2 class="form-title">Add a question</h2>
+
+						<div class="form-group">
+                            <label class="u-label">Enter Class</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.classes}}
+                        </div>
+                        <div class="form-group">
+                            <label class="u-label">Subject</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.subject}}
+                        </div>
+                        <div class="form-group">
+							<label class="u-label align" data-align="top">Chapter</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.chapter}}
+                        </div>
+
+                        <div class="form-group">
+                            <label class="u-label">Scenario</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.scenario}}
+                        </div>
+                        <div class="form-group">
+                            <label class="u-label">Question Image</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.ques_img}}
+                        </div>
+                        <div class="form-group">
+							<label class="u-label align" data-align="top">First Question</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.q_a}}
+                        </div>
+                            <div class="form-group">
+							<label class="u-label align" data-align="top">Second Question</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.q_b}}
+                        </div>
+                            <div class="form-group">
+							<label class="u-label align" data-align="top">Third Question</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.q_c}}
+                        </div>
+                            <div class="form-group">
+							<label class="u-label align" data-align="top">Fourth Question</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.q_d}}
+                        </div>
+
+
+                        <button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up">Submit</button>
+
+                    </form>
+</body>
+</html>

@@ -7,7 +7,7 @@ from django.template.loader import get_template
 from django.urls import reverse
 from django.views import View
 
-from .models import usercanvas, questions
+from .models import usercanvas, questions, selectiveQuestion
 
 from django.contrib.auth.decorators import login_required
 
@@ -71,15 +71,28 @@ def removequestion(request, pk):
 
 @login_required(login_url="/account/login/")
 def questionsss(request):
-    questionss = questions.objects.filter(classes=int(classAndSubjects.classInput), subject=classAndSubjects.subjectInput)
-    context = {'questionss': questionss}
+    questionss = questions.objects.filter(classes=int(classAndSubjects.classInput),
+                                          subject=classAndSubjects.subjectInput)
+    questionsSelective = selectiveQuestion.objects.filter(classes=int(classAndSubjects.classInput),
+                                                          subject=classAndSubjects.subjectInput)
+    context = {'questionss': questionss, 'questionsSelective': questionsSelective}
     return render(request, 'main/questionAdd.html', context)
 
 
 @login_required(login_url="/account/login/")
 def addquestion(request, pk):
     instance = questions.objects.get(id=pk)
-    instance2 = usercanvas.objects.create(user=request.user, scenario=instance.scenario, ques_img=instance.ques_img, q_a=instance.q_a, q_b=instance.q_b, q_c=instance.q_c, q_d=instance.q_d)
+    instance2 = usercanvas.objects.create(user=request.user, scenario=instance.scenario, ques_img=instance.ques_img,
+                                          q_a=instance.q_a, q_b=instance.q_b, q_c=instance.q_c, q_d=instance.q_d)
+    instance2.save()
+    return redirect('articles:canvas')
+
+
+@login_required(login_url="/account/login/")
+def addquestionSelective(request, pk):
+    instance = selectiveQuestion.objects.get(id=pk)
+    instance2 = usercanvas.objects.create(user=request.user, scenario=instance.scenario, ques_img=instance.ques_img,
+                                          q_a=instance.q_a, q_b=instance.q_b, q_c=instance.q_c, q_d=instance.q_d)
     instance2.save()
     return redirect('articles:canvas')
 
@@ -176,3 +189,53 @@ def unicodeinput(request):
             next = request.POST.get('next', '/')
             return HttpResponseRedirect(url)
     return render(request, 'main/unicodequestions.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+@allowed_users(allowed_roles=['staff'])
+def bijoyinputSelective(request):
+    scenario = request.POST.get('scenario')
+    qa = request.POST.get('qa')
+    qb = request.POST.get('qb')
+    qc = request.POST.get('qc')
+    qd = request.POST.get('qd')
+    if scenario is not None:
+        convertedScenario = bijoy2unicode(scenario)
+    if qa is not None:
+        convertedqa = bijoy2unicode(qa)
+    if qb is not None:
+        convertedqb = bijoy2unicode(qb)
+    if qc is not None:
+        convertedqc = bijoy2unicode(qc)
+    if qd is not None:
+        convertedqd = bijoy2unicode(qd)
+    form = forms.questionInputBijoySelective()
+    if request.method == 'POST':
+        form = forms.questionInputBijoySelective(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.scenario = convertedScenario
+            instance.q_a = convertedqa
+            instance.q_b = convertedqb
+            instance.q_c = convertedqc
+            instance.q_d = convertedqd
+            instance.save()
+            url = reverse('articles:questioninput')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(url)
+    return render(request, 'main/bijoySelective.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+@allowed_users(allowed_roles=['staff'])
+def unicodeinputSelective(request):
+    form = forms.questionInputSelective()
+    if request.method == 'POST':
+        form = forms.questionInputSelective(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            url = reverse('articles:questioninput')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(url)
+    return render(request, 'main/unicodeSelective.html', {'form': form})

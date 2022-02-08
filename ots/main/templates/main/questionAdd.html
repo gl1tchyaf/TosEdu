@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        Questions
+         Questions
         {% for questionss in questionss %}
     <h1>Question:</h1>
         {% if questionss.ques_img %}
@@ -14,6 +14,20 @@
         <h4>{{ questionss.q_c }}</h4>
         <h4>{{ questionss.q_d }}</h4>
          <a href="{% url 'articles:addquestion' questionss.id %}">Add this question</a>
+        {% endfor %}
+    <br>
+    Selective Questions
+        {% for questionsSelective in questionsSelective %}
+    <h1>Question:</h1>
+        {% if questionsSelective.ques_img %}
+        <img src="{{ questionsSelective.ques_img.url }}" alt="Error" height="200px" width="200px">
+        {% endif %}
+        <h4>{{ questionsSelective.scenario }}</h4>
+        <h4>{{ questionsSelective.q_a }}</h4>
+        <h4>{{ questionsSelective.q_b }}</h4>
+        <h4>{{ questionsSelective.q_c }}</h4>
+        <h4>{{ questionsSelective.q_d }}</h4>
+         <a href="{% url 'articles:addquestionSelective' questionsSelective.id %}">Add this question</a>
         {% endfor %}
 </head>
 <body>
