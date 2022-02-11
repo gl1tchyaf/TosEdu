@@ -1,110 +1,85 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Login Page</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/fonts/icomoon/style.css">
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
 
-	<link rel="stylesheet" href="/static/css/login-style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 
-	</head>
-	<body class="img js-fullheight" style="background-image: url(/static/images/Sunrise-at-Sajek-Valley.jpg);">
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Welcome to Green Travel</h2>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-6 col-lg-4">
-					<div class="login-wrap p-0">
-		      	<h3 class="mb-4 text-center">Have an account?</h3>
-		      	<form action="#" class="signin-form" method="post">
-				{% csrf_token %}
-		      		<div class="form-group">
-		      			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username &nbsp; <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
-		      		</div>
-	            <div class="form-group">
-	              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password &nbsp; <input class="#password-field" type="password" name="password" autocomplete="current-password" required="" id="id_password">
+    <!-- Style -->
+    <link rel="stylesheet" href="/static/css/login-style.css">
 
-				  {% if request.GET.next %}
+    <title>Login Page</title>
+  </head>
+  <body>
+
+
+
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+			<h3 align="center">Welcome To TosEdu</h3>
+          <img src="/static/images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+
+              <h3>Sign In</h3>
+              <p class="mb-4"></p>
+            </div>
+            <form action="#" class="signin-form" method="post">
+              {% csrf_token %}
+			  <div class="form-group first">
+                <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" placeholder="Username">
+
+              </div>
+              <div class="form-group last mb-4">
+                <input class="#password-field" type="password" name="password" autocomplete="current-password" required="" id="id_password" placeholder="Password">
+
+              </div>
+			  {% if request.GET.next %}
 					<input type="hidden" name="next" value="{{ request.GET.next }}">
 				{% endif %}
-	            </div>
-				{% for message in messages %}
+
+              <div class="d-flex mb-5 align-items-center">
+                  <div>
+                    <span class="ml-auto"><a href="../reset_password/" class="forgot-pass">Forgot Password</a></span>
+                  </div>
+                </label>
+
+              </div>
+			  {% for message in messages %}
 					<p id="messages">{{message}}</p>
-				{% endfor %}
+			  {% endfor %}
 
-	            <div class="form-group">
-	            	<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
-	            </div>
-	            <div class="form-group d-md-flex">
-	            	<div class="w-50">
-		            	<label class="checkbox-wrap checkbox-primary">Remember Me
-									  <input type="checkbox" checked>
-									  <span class="checkmark"></span>
-									</label>
-								</div>
-								<div class="w-50 text-md-right">
-									<a href="../reset_password/" style="color: #fff">Forgot Password</a>
-								</div>
-	            </div>
-				<div class="w-100 text-center">
-					Don't have an account? <a href="../signup/" class="ml-2">Sign Up</a>
-					</div>
-	          </form>
-		      </div>
-				</div>
-			</div>
-		</div>
-	</section>
+              <button type="submit" class="btn btn-block btn-primary">Sign In</button>
+
+				<p class="d-block text-left my-4 text-muted"><a href="../signup/">Don't have an account? </a></p>
+
+            </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
-<script type="text/javascript">
-  gapi.load('auth2', function () {
-    var auth2;
-
-    auth2 = gapi.auth2.init({
-      client_id: "<PUT SOCIAL_AUTH_GOOGLE_PLUS_KEY HERE>",
-      scope: "<PUT BACKEND SCOPE HERE>"
-    });
-
-    auth2.then(function () {
-      var button = document.getElementById("google-plus-button");
-      console.log("User is signed-in in Google+ platform?", auth2.isSignedIn.get() ? "Yes" : "No");
-
-      auth2.attachClickHandler(button, {}, function (googleUser) {
-        // Send access-token to backend to finish the authenticate
-        // with your application
-
-        var authResponse = googleUser.getAuthResponse();
-        var $form;
-        var $input;
-
-        $form = $("<form>");
-        $form.attr("action", "/complete/google-plus");
-        $form.attr("method", "post");
-        $input = $("<input>");
-        $input.attr("name", "id_token");
-        $input.attr("value", authResponse.id_token);
-        $form.append($input);
-        // Add csrf-token if needed
-        $(document.body).append($form);
-        $form.submit();
-      });
-    });
-  });
-</script>
-	<script src="/static/js/login-jquery.min.js"></script>
-  <script src="/static/js/login-popper.js"></script>
-  <script src="/static/js/login-bootstrap.min.js"></script>
-  <script src="/static/js/login-main.js"></script>
-<script src="https://apis.google.com/js/api:client.js"></script>
-	</body>
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/main.js"></script>
+  </body>
 </html>
-
