@@ -1,9 +1,10 @@
 from django.contrib import admin
 
-from .models import questions, usercanvas, selectiveQuestion, usercanvasSelective, userInformation
+from .models import questions, usercanvas, selectiveQuestion, usercanvasSelective, userInformation, paymentInformation
 
 admin.site.register(questions)
 admin.site.register(usercanvas)
 admin.site.register(selectiveQuestion)
 admin.site.register(usercanvasSelective)
 admin.site.register(userInformation)
+admin.site.register(paymentInformation)

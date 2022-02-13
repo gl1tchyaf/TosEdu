@@ -48,6 +48,15 @@ CHAPTERS_CHOICES = [
 ]
 
 
+POINT_CHOICES = [
+    (5, 'Five Point'),
+    (10, 'Ten Point'),
+    (20, 'Twenty Point'),
+    (50, 'Fifty Point'),
+    (100, 'Hundred Point'),
+]
+
+
 class questions(models.Model):
     classes = models.IntegerField(choices=CLASSSS_CHOICES, default=None, null=True)
     subject = models.CharField(choices=SUBJECT_CHOICES, max_length=100, default=None, null=True)
@@ -97,3 +106,8 @@ class userInformation(models.Model):
     institution = models.CharField(max_length=100, blank=True)
     point = models.IntegerField(default=0)
 
+
+class paymentInformation(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
+    package = models.IntegerField(choices=POINT_CHOICES, default=None, null=True)
+    trxID = models.CharField(max_length=100, blank=True)

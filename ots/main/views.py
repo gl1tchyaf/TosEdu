@@ -312,3 +312,18 @@ def unicodeinputSelective(request):
             next = request.POST.get('next', '/')
             return HttpResponseRedirect(url)
     return render(request, 'main/unicodeSelective.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+def purchasePoint(request):
+    form = forms.paymentInformation()
+    if request.method == 'POST':
+        form = forms.paymentInformation(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            url = reverse('articles:list')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(url)
+    return render(request, 'main/PurchasePoint.html', {'form': form})

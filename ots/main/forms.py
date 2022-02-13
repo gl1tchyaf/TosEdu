@@ -32,3 +32,8 @@ class userInformation(forms.ModelForm):
         fields = ['institution']
 
 
+class paymentInformation(forms.ModelForm):
+    class Meta:
+        model = models.paymentInformation
+        fields = ['package', 'trxID']
+

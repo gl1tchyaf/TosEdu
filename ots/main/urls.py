@@ -26,4 +26,6 @@ urlpatterns = [
     url(r'^unicodeinputSelective/$', views.unicodeinputSelective, name="unicodeinputSelective"),
     url(r'^bijoyinputSelective/$', views.bijoyinputSelective, name="bijoyinputSelective"),
     url(r'^userInfo/$', views.userInfo, name="userInfo"),
+
+    url(r'^purchasePoint/$', views.purchasePoint, name="purchasePoint"),
 ]
