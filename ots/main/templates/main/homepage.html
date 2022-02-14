@@ -6,6 +6,7 @@
     <h1>Your Institute: {{ user.institution }}</h1>
     <h1>Your Point: {{ user.point }}</h1>
     <a href="{% url 'articles:canvas' %}">Question Maker</a>
+    <a href="{% url 'articles:user_profile' %}">User Profile</a>
 <a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                                         {% csrf_token %}
                             <button type="submit" class="cr-btn cr-btn-sm">Logout</button>

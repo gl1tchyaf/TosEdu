@@ -111,3 +111,13 @@ class paymentInformation(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
     package = models.IntegerField(choices=POINT_CHOICES, default=None, null=True)
     trxID = models.CharField(max_length=100, blank=True)
+
+
+class userProfile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=300, null=True)
+    user_phone = models.CharField(max_length=20, null=True)
+    user_address = models.CharField(max_length=20, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+    bio = models.CharField(max_length=300, null=True)
+    user_image = models.ImageField(blank=True, null=True, upload_to='media', default='user.png')

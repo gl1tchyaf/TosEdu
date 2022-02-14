@@ -28,4 +28,7 @@ urlpatterns = [
     url(r'^userInfo/$', views.userInfo, name="userInfo"),
 
     url(r'^purchasePoint/$', views.purchasePoint, name="purchasePoint"),
+
+    url(r'^user_profile/$', views.UserProfile, name="user_profile"),
+    url(r'^create_profile/$', views.createProfile, name="create_profile"),
 ]

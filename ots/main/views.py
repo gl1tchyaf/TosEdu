@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 
-from .models import usercanvas, questions, selectiveQuestion, usercanvasSelective, userInformation
+from .models import usercanvas, questions, selectiveQuestion, usercanvasSelective, userInformation, userProfile
 
 from django.contrib.auth.decorators import login_required
 
@@ -327,3 +327,73 @@ def purchasePoint(request):
             next = request.POST.get('next', '/')
             return HttpResponseRedirect(url)
     return render(request, 'main/PurchasePoint.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+def updateUserProfile(request, pk):
+    instance = userProfile.objects.get(id=pk)
+    instance.save()
+    updateUserProfile.primaryKey = pk
+    return redirect('articles:user_profile')
+
+
+@login_required(login_url="/account/login/")
+def UserProfile(request):
+    primaryKey = request.POST.get('primaryKey')
+    if primaryKey is None:
+        primaryKey = 1
+    instance = userProfile.objects.get(id=primaryKey)
+    UserProfile.user_name = request.POST.get('user_name')
+    UserProfile.phone = request.POST.get('phone_number')
+    UserProfile.address = request.POST.get('address')
+    UserProfile.bio = request.POST.get('bio')
+    UserProfile.image = request.FILES.get('image')
+
+    if UserProfile.user_name is not None and UserProfile.user_name != '':
+        instance.user_name = UserProfile.user_name
+
+    if UserProfile.phone is not None and UserProfile.phone != '':
+        instance.user_phone = UserProfile.phone
+
+    if UserProfile.address is not None and UserProfile.address != '':
+        instance.user_address = UserProfile.address
+
+    if UserProfile.bio is not None and UserProfile.bio!= '':
+        instance.bio = UserProfile.bio
+
+    if UserProfile.image is not None:
+        instance.user_image = UserProfile.image
+    instance.save()
+
+    profile = userProfile.objects.all()
+    profile2 = userProfile.objects.filter(user=request.user).first()
+    b = ''
+    if profile2 is None:
+        b = 'NoData'
+
+    context = {}
+    context['profile'] = profile
+    context['booli'] = b
+    context['name'] = UserProfile.user_name
+    context['phone'] = UserProfile.phone
+    context['address'] = UserProfile.address
+    context['bio'] = UserProfile.bio
+    context['image'] = UserProfile.image
+
+    return render(request, 'main/user_profile.html', context)
+
+
+@login_required(login_url="/account/login/")
+def createProfile(request):
+    form = forms.UserProfile()
+    if request.method == 'POST':
+        form = forms.UserProfile(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        form = forms.UserProfile()
+    return render(request, 'main/createprofile.html', {'form': form})
