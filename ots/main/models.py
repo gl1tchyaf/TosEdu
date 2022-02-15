@@ -121,3 +121,7 @@ class userProfile(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     bio = models.CharField(max_length=300, null=True)
     user_image = models.ImageField(blank=True, null=True, upload_to='media', default='user.png')
+
+
+class testDocx(models.Model):
+    docx = models.FileField(blank=True, null=True)

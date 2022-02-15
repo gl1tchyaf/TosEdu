@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 
-from .models import usercanvas, questions, selectiveQuestion, usercanvasSelective, userInformation, userProfile
+from .models import usercanvas, questions, selectiveQuestion, usercanvasSelective, userInformation, userProfile, testDocx
 
 from django.contrib.auth.decorators import login_required
 
@@ -12,6 +12,8 @@ from .permission import allowed_users
 from . import forms
 
 from bijoytounicode import bijoy2unicode
+
+import mammoth
 
 
 @login_required(login_url="/accounts/login/")
@@ -72,8 +74,9 @@ def classAndSubjects(request):
     classAndSubjects.subjectInput = ""
     classAndSubjects.classInput = request.POST.get('class-Input')
     classAndSubjects.subjectInput = request.POST.get('subject-Input')
-    context = {'classInput': classAndSubjects.classInput, 'subjectInput': classAndSubjects.subjectInput}
-    return render(request, 'main/classAndSubjects.html', context)
+    if classAndSubjects.classInput and classAndSubjects.subjectInput is not None:
+        return redirect('articles:questions')
+    return render(request, 'main/classAndSubjects.html')
 
 
 @login_required(login_url="/account/login/")
@@ -198,7 +201,6 @@ def questionsGenerate(request):
     canvassSelective = usercanvasSelective.objects.filter(user=request.user)
     for i in canvassSelective:
         count += 1
-    print(count)
     if userInfo.point >= count:
         userInfo.point = userInfo.point - count
         userInfo.save()
@@ -397,3 +399,20 @@ def createProfile(request):
     else:
         form = forms.UserProfile()
     return render(request, 'main/createprofile.html', {'form': form})
+
+
+import docx
+@login_required(login_url="/account/login/")
+def openDocx(request):
+    docc = testDocx.objects.get(id=1)
+    context = {}
+    context['doc'] = docc
+
+    doc = docx.Document(docc.docx)
+    all_paras = doc.paragraphs
+    len(all_paras)
+    for para in all_paras:
+        print(para.text)
+        print("-------")
+
+    return render(request, 'main/openDocx.html', context)
