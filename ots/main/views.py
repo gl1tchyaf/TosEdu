@@ -404,7 +404,7 @@ def createProfile(request):
     return render(request, 'main/createprofile.html', {'form': form})
 
 
-from docx
+import docx
 
 
 @login_required(login_url="/account/login/")
@@ -412,7 +412,7 @@ def openDocx(request):
     docc = testDocx.objects.get(id=1)
     context = {}
     context['doc'] = docc
-    doc = docx.Document(docc.docx)
+    doc = docx.Document(docc.docs)
     fullText = []
     for para in doc.paragraphs:
         fullText.append(para.text)
