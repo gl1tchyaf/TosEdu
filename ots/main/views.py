@@ -14,8 +14,6 @@ from . import forms
 
 from bijoytounicode import bijoy2unicode
 
-import mammoth
-
 
 @login_required(login_url="/accounts/login/")
 # @allowed_users(allowed_roles=['staff'])
@@ -416,5 +414,6 @@ def openDocx(request):
     fullText = []
     for para in doc.paragraphs:
         fullText.append(para.text)
-    print(fullText)
+        fullText.append('\n')
+    context = {'data': fullText}
     return render(request, 'main/openDocx.html', context)
