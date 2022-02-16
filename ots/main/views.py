@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 
-from .models import usercanvas, questions, selectiveQuestion, usercanvasSelective, userInformation, userProfile, testDocx
+from .models import usercanvas, questions, selectiveQuestion, usercanvasSelective, userInformation, userProfile, \
+    testDocx
 
 from django.contrib.auth.decorators import login_required
 
@@ -123,8 +124,10 @@ def addquestion(request, pk):
 @login_required(login_url="/account/login/")
 def addquestionSelective(request, pk):
     instance = selectiveQuestion.objects.get(id=pk)
-    instance2 = usercanvasSelective.objects.create(user=request.user, scenario=instance.scenario, ques_img=instance.ques_img,
-                                          q_a=instance.q_a, q_b=instance.q_b, q_c=instance.q_c, q_d=instance.q_d)
+    instance2 = usercanvasSelective.objects.create(user=request.user, scenario=instance.scenario,
+                                                   ques_img=instance.ques_img,
+                                                   q_a=instance.q_a, q_b=instance.q_b, q_c=instance.q_c,
+                                                   q_d=instance.q_d)
     instance2.save()
     return redirect('articles:canvas')
 
@@ -360,7 +363,7 @@ def UserProfile(request):
     if UserProfile.address is not None and UserProfile.address != '':
         instance.user_address = UserProfile.address
 
-    if UserProfile.bio is not None and UserProfile.bio!= '':
+    if UserProfile.bio is not None and UserProfile.bio != '':
         instance.bio = UserProfile.bio
 
     if UserProfile.image is not None:
@@ -401,18 +404,18 @@ def createProfile(request):
     return render(request, 'main/createprofile.html', {'form': form})
 
 
-import docx
+from docx import Document
+from docx.shared import Inches
+
+
 @login_required(login_url="/account/login/")
 def openDocx(request):
     docc = testDocx.objects.get(id=1)
     context = {}
     context['doc'] = docc
-
     doc = docx.Document(docc.docx)
-    all_paras = doc.paragraphs
-    len(all_paras)
-    for para in all_paras:
-        print(para.text)
-        print("-------")
-
+    fullText = []
+    for para in doc.paragraphs:
+        fullText.append(para.text)
+    print(fullText)
     return render(request, 'main/openDocx.html', context)

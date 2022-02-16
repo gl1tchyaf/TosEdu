@@ -124,4 +124,4 @@ class userProfile(models.Model):
 
 
 class testDocx(models.Model):
-    docx = models.FileField(blank=True, null=True)
+    docs = models.FileField(blank=True, null=True)
