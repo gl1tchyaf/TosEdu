@@ -47,11 +47,6 @@
               Submit
             </button>
     </form>
-	{% if classInput and subjectInput %}
-	<h1>Class selected {{ classInput }}</h1>
-	<h1>Subject selected {{ subjectInput }}</h1>
-	<a href="{% url 'articles:questions' %}">Accept and get questions</a>
-	{% endif %}
 
 </head>
 <body>
