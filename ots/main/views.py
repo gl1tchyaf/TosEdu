@@ -404,8 +404,7 @@ def createProfile(request):
     return render(request, 'main/createprofile.html', {'form': form})
 
 
-from docx import Document
-from docx.shared import Inches
+from docx
 
 
 @login_required(login_url="/account/login/")
