@@ -123,5 +123,9 @@ class userProfile(models.Model):
     user_image = models.ImageField(blank=True, null=True, upload_to='media', default='user.png')
 
 
-class testDocx(models.Model):
+class docQuestions(models.Model):
+    classes = models.IntegerField(choices=CLASSSS_CHOICES, default=None, null=True)
+    subject = models.CharField(choices=SUBJECT_CHOICES, max_length=100, default=None, null=True)
+    chapter = models.IntegerField(choices=CHAPTERS_CHOICES, default=None, null=True)
+    questionTitle = models.CharField(max_length=300, blank=True)
     docs = models.FileField(blank=True, null=True)

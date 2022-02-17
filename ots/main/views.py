@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views import View
 
 from .models import usercanvas, questions, selectiveQuestion, usercanvasSelective, userInformation, userProfile, \
-    testDocx
+    docQuestions
 
 from django.contrib.auth.decorators import login_required
 
@@ -407,7 +407,7 @@ import docx
 
 @login_required(login_url="/account/login/")
 def openDocx(request):
-    docc = testDocx.objects.get(id=1)
+    docc = docQuestions.objects.get(id=1)
     context = {}
     context['doc'] = docc
     doc = docx.Document(docc.docs)
@@ -417,3 +417,19 @@ def openDocx(request):
         fullText.append('\n')
     context = {'data': fullText}
     return render(request, 'main/openDocx.html', context)
+
+
+@login_required(login_url="/account/login/")
+def lessThanSix(request):
+    classAndSubjects.classInput = ""
+    classAndSubjects.subjectInput = ""
+    classAndSubjects.classInput = request.POST.get('class-Input')
+    classAndSubjects.subjectInput = request.POST.get('subject-Input')
+    if classAndSubjects.classInput and classAndSubjects.subjectInput is not None:
+        return redirect('articles:showDoc')
+    return render(request, 'main/classAndSubjectlessThenSix.html')
+
+
+@login_required(login_url="/account/login/")
+def showDoc(request):
+    return render(request, 'main/showDocQuestions.html')
