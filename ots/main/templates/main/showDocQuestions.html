@@ -5,6 +5,8 @@
     <title>Show Questions</title>
 </head>
 <body>
-
+    {% for qlist in qlist %}
+    <a href="{% url 'articles:openDocx' qlist.id %}">{{qlist.questionTitle}}</a>
+    {% endfor %}
 </body>
 </html>

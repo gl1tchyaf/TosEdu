@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^user_profile/$', views.UserProfile, name="user_profile"),
     url(r'^create_profile/$', views.createProfile, name="create_profile"),
 
-    url(r'^openDocx/$', views.openDocx, name="openDocx"),
+    path('openDocx/<str:pk>/$', views.openDocx, name="openDocx"),
     url(r'^lessThanSix/$', views.lessThanSix, name="lessThanSix"),
     url(r'^showDoc/$', views.showDoc, name="showDoc"),
 ]

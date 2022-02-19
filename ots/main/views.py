@@ -406,30 +406,33 @@ import docx
 
 
 @login_required(login_url="/account/login/")
-def openDocx(request):
-    docc = docQuestions.objects.get(id=1)
+def openDocx(request, pk):
+    docc = docQuestions.objects.get(id=pk)
     context = {}
     context['doc'] = docc
     doc = docx.Document(docc.docs)
     fullText = []
     for para in doc.paragraphs:
-        fullText.append(para.text)
-        fullText.append('\n')
+        convertedpara = bijoy2unicode(para.text)
+        fullText.append(convertedpara)
     context = {'data': fullText}
     return render(request, 'main/openDocx.html', context)
 
 
 @login_required(login_url="/account/login/")
 def lessThanSix(request):
-    classAndSubjects.classInput = ""
-    classAndSubjects.subjectInput = ""
-    classAndSubjects.classInput = request.POST.get('class-Input')
-    classAndSubjects.subjectInput = request.POST.get('subject-Input')
-    if classAndSubjects.classInput and classAndSubjects.subjectInput is not None:
+    lessThanSix.classInput = ""
+    lessThanSix.subjectInput = ""
+    lessThanSix.classInput = request.POST.get('class-Input')
+    lessThanSix.subjectInput = request.POST.get('subject-Input')
+    if lessThanSix.classInput and lessThanSix.subjectInput is not None:
         return redirect('articles:showDoc')
     return render(request, 'main/classAndSubjectlessThenSix.html')
 
 
 @login_required(login_url="/account/login/")
 def showDoc(request):
-    return render(request, 'main/showDocQuestions.html')
+    qlist = docQuestions.objects.filter(classes=lessThanSix.classInput,subject=lessThanSix.subjectInput)
+    context = {}
+    context['qlist'] = qlist
+    return render(request, 'main/showDocQuestions.html', context)
