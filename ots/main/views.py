@@ -407,6 +407,9 @@ import docx
 
 @login_required(login_url="/account/login/")
 def openDocx(request, pk):
+    openDocx.docOpen = request.POST.get('doc-Open')
+    if openDocx.docOpen is not None:
+        return redirect('articles:docQuestionPage')
     docc = docQuestions.objects.get(id=pk)
     context = {}
     context['doc'] = docc
@@ -416,6 +419,7 @@ def openDocx(request, pk):
         convertedpara = bijoy2unicode(para.text)
         fullText.append(convertedpara)
     context = {'data': fullText}
+
     return render(request, 'main/openDocx.html', context)
 
 
@@ -432,7 +436,13 @@ def lessThanSix(request):
 
 @login_required(login_url="/account/login/")
 def showDoc(request):
-    qlist = docQuestions.objects.filter(classes=lessThanSix.classInput,subject=lessThanSix.subjectInput)
-    context = {}
-    context['qlist'] = qlist
+    qlist = docQuestions.objects.filter(classes=lessThanSix.classInput, subject=lessThanSix.subjectInput)
+    context = {'qlist': qlist}
     return render(request, 'main/showDocQuestions.html', context)
+
+
+@login_required(login_url="/account/login/")
+def docQuestionPage(request):
+    context = {'docOpen': openDocx.docOpen}
+    return render(request, 'main/docQuestionPage.html', context)
+

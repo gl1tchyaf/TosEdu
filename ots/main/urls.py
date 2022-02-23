@@ -35,4 +35,5 @@ urlpatterns = [
     path('openDocx/<str:pk>/$', views.openDocx, name="openDocx"),
     url(r'^lessThanSix/$', views.lessThanSix, name="lessThanSix"),
     url(r'^showDoc/$', views.showDoc, name="showDoc"),
+    url(r'^docQuestionPage/$', views.docQuestionPage, name="docQuestionPage"),
 ]
