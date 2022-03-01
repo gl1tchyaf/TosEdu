@@ -36,4 +36,6 @@ urlpatterns = [
     url(r'^lessThanSix/$', views.lessThanSix, name="lessThanSix"),
     url(r'^showDoc/$', views.showDoc, name="showDoc"),
     url(r'^docQuestionPage/$', views.docQuestionPage, name="docQuestionPage"),
+
+    url(r'^classsuggession/$', views.sugesstion_class, name="classsuggession"),
 ]

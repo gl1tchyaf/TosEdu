@@ -129,3 +129,21 @@ class docQuestions(models.Model):
     chapter = models.IntegerField(choices=CHAPTERS_CHOICES, default=None, null=True)
     questionTitle = models.CharField(max_length=300, blank=True)
     docs = models.FileField(blank=True, null=True)
+
+
+class class_suggesstion(models.Model):
+    classes = models.IntegerField(choices=CLASSSS_CHOICES, default=None, null=True)
+    date = models.DateField()
+    bangla = models.CharField(max_length=100, null=True, blank=True)
+    english = models.CharField(max_length=100, null=True, blank=True)
+    math = models.CharField(max_length=100, null=True, blank=True)
+    science = models.CharField(max_length=100, null=True, blank=True)
+    social = models.CharField(max_length=100, null=True, blank=True)
+    islamReligion = models.CharField(max_length=100, null=True, blank=True)
+    hinduReligion = models.CharField(max_length=100, null=True, blank=True)
+    boudhuReligion = models.CharField(max_length=100, null=True, blank=True)
+    cristantianReligion = models.CharField(max_length=100, null=True, blank=True)
+    artsAndCrafts = models.CharField(max_length=100, null=True, blank=True)
+    physicalEducation = models.CharField(max_length=100, null=True, blank=True)
+    music = models.CharField(max_length=100, null=True, blank=True)
+    comment = models.CharField(max_length=100, null=True, blank=True)

@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views import View
 
 from .models import usercanvas, questions, selectiveQuestion, usercanvasSelective, userInformation, userProfile, \
-    docQuestions
+    docQuestions, class_suggesstion
 
 from django.contrib.auth.decorators import login_required
 
@@ -13,6 +13,7 @@ from .permission import allowed_users
 from . import forms
 
 from bijoytounicode import bijoy2unicode
+from datetime import date
 
 
 @login_required(login_url="/accounts/login/")
@@ -446,3 +447,26 @@ def docQuestionPage(request):
     context = {'docOpen': openDocx.docOpen}
     return render(request, 'main/docQuestionPage.html', context)
 
+
+@login_required(login_url="/account/login/")
+def sugesstion_class(request):
+    today = date.today()
+    print(today.weekday())
+    month, day = today.month, today.day
+    instance = class_suggesstion.objects.filter(classes=1)
+    for i in instance:
+        if i.date.month == month and i.date.day == day:
+            print(i.bangla)
+            print(i.english)
+            print(i.math)
+            print(i.science)
+            print(i.social)
+            print(i.islamReligion)
+            print(i.hinduReligion)
+            print(i.boudhuReligion)
+            print(i.cristantianReligion)
+            print(i.artsAndCrafts)
+            print(i.physicalEducation)
+            print(i.music)
+            print(i.comment)
+    return render(request, 'main/suggesstion_class.html')
