@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views import View
 
 from .models import usercanvas, questions, selectiveQuestion, usercanvasSelective, userInformation, userProfile, \
-    docQuestions
+    docQuestions, english_docQuestions
 
 from django.contrib.auth.decorators import login_required
 
@@ -444,5 +444,44 @@ def showDoc(request):
 @login_required(login_url="/account/login/")
 def docQuestionPage(request):
     context = {'docOpen': openDocx.docOpen}
+    return render(request, 'main/docQuestionPage.html', context)
+
+
+@login_required(login_url="/account/login/")
+def openEnglishDocx(request, pk):
+    openEnglishDocx.docOpen = request.POST.get('doc-Open')
+    if openEnglishDocx.docOpen is not None:
+        return redirect('articles:docEnglishQuestionPage')
+    docc = english_docQuestions.objects.get(id=pk)
+    context = {}
+    context['doc'] = docc
+    doc = docx.Document(docc.docs)
+    fullText = []
+    for para in doc.paragraphs:
+        fullText.append(para.text)
+    context = {'data': fullText}
+
+    return render(request, 'main/openEnglishDocx.html', context)
+
+
+@login_required(login_url="/account/login/")
+def showEnglishDoc(request):
+    qlist = english_docQuestions.objects.filter(classes=lessThanSix.classInput)
+    context = {'qlist': qlist}
+    return render(request, 'main/showEnglishDocQuestions.html', context)
+
+
+@login_required(login_url="/account/login/")
+def englishQuestions(request):
+    lessThanSix.classInput = ""
+    lessThanSix.classInput = request.POST.get('class-Input')
+    if lessThanSix.classInput is not None:
+        return redirect('articles:showEnglishDoc')
+    return render(request, 'main/englishQuestions.html')
+
+
+@login_required(login_url="/account/login/")
+def docEnglishQuestionPage(request):
+    context = {'docOpen': openEnglishDocx.docOpen}
     return render(request, 'main/docQuestionPage.html', context)
 
