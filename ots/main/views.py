@@ -465,23 +465,25 @@ def openEnglishDocx(request, pk):
 
 
 @login_required(login_url="/account/login/")
-def showEnglishDoc(request):
-    qlist = english_docQuestions.objects.filter(classes=lessThanSix.classInput)
-    context = {'qlist': qlist}
-    return render(request, 'main/showEnglishDocQuestions.html', context)
+def englishQuestions(request):
+    englishQuestions.classInput = ""
+    englishQuestions.paperInput = ""
+    englishQuestions.classInput = request.POST.get('class-Input')
+    englishQuestions.paperInput = request.POST.get('paper-Input')
+    print(englishQuestions.paperInput)
+    if englishQuestions.classInput and englishQuestions.paperInput is not None:
+        return redirect('articles:showEnglishDoc')
+    return render(request, 'main/englishQuestions.html')
 
 
 @login_required(login_url="/account/login/")
-def englishQuestions(request):
-    lessThanSix.classInput = ""
-    lessThanSix.classInput = request.POST.get('class-Input')
-    if lessThanSix.classInput is not None:
-        return redirect('articles:showEnglishDoc')
-    return render(request, 'main/englishQuestions.html')
+def showEnglishDoc(request):
+    qlist = english_docQuestions.objects.filter(classes=englishQuestions.classInput, paper=englishQuestions.paperInput)
+    context = {'qlist': qlist}
+    return render(request, 'main/showEnglishDocQuestions.html', context)
 
 
 @login_required(login_url="/account/login/")
 def docEnglishQuestionPage(request):
     context = {'docOpen': openEnglishDocx.docOpen}
     return render(request, 'main/docQuestionPage.html', context)
-

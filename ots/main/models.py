@@ -17,8 +17,6 @@ CLASSSS_CHOICES = [
 SUBJECT_CHOICES = [
     ('bangla1', 'Bangla 1st Paper'),
     ('bangla2', 'Bangla 2nd Paper'),
-    ('english1', 'English 1st Paper'),
-    ('enlish2', 'English 2nd Paper'),
     ('math', 'Math'),
     ('religion', 'Religion'),
     ('ict', 'ICT'),
@@ -32,6 +30,10 @@ SUBJECT_CHOICES = [
     ('agriculture', 'Agricultural Studies'),
     ('gscinece', 'General Science'),
     ('bgs', 'Bangladesh and Global Studies'),
+]
+PAPER_CHOICES = [
+    ('english1', '1st Paper'),
+    ('english2', '2nd Paper'),
 ]
 
 CHAPTERS_CHOICES = [
@@ -132,6 +134,7 @@ class docQuestions(models.Model):
 
 class english_docQuestions(models.Model):
     classes = models.IntegerField(choices=CLASSSS_CHOICES, default=None, null=True)
+    paper = models.CharField(choices=PAPER_CHOICES, max_length=100, default=None, null=True)
     chapter = models.IntegerField(choices=CHAPTERS_CHOICES, default=None, null=True)
     questionTitle = models.CharField(max_length=300, blank=True)
     docs = models.FileField(blank=True, null=True)
