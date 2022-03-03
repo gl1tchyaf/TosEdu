@@ -43,3 +43,21 @@ class UserProfile(forms.ModelForm):
         model = models.userProfile
         fields = ['user_name', 'user_phone', 'user_address', 'bio', 'user_image']
 
+
+class DocumentQuestions(forms.ModelForm):
+    class Meta:
+        model = models.docQuestions
+        fields = ['classes', 'subject', 'chapter', 'questionTitle', 'docs']
+
+
+class EnglishDocQuestions(forms.ModelForm):
+    class Meta:
+        model = models.english_docQuestions
+        fields = ['classes', 'paper', 'chapter', 'questionTitle', 'docs']
+
+
+class ClassSuggesstion(forms.ModelForm):
+    class Meta:
+        model = models.class_suggesstion
+        fields = ['classes', 'date', 'bangla', 'english', 'math', 'science', 'social', 'islamReligion', 'hinduReligion',
+                  'boudhuReligion', 'cristantianReligion', 'artsAndCrafts', 'physicalEducation', 'music', 'comment']

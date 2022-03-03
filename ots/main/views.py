@@ -513,3 +513,48 @@ def sugesstion_class(request):
             print(i.music)
             print(i.comment)
     return render(request, 'main/suggesstion_class.html')
+
+
+@login_required(login_url="/account/login/")
+@allowed_users(allowed_roles=['staff'])
+def DocumentQuestionsform(request):
+    form = forms.DocumentQuestions()
+    if request.method == 'POST':
+        form = forms.DocumentQuestions(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            url = reverse('articles:DocumentQuestionsform')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(url)
+    return render(request, 'main/DocumentQuestionsForm.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+@allowed_users(allowed_roles=['staff'])
+def EnglishDocQuestionsform(request):
+    form = forms.EnglishDocQuestions()
+    if request.method == 'POST':
+        form = forms.EnglishDocQuestions(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            url = reverse('articles:EnglishDocQuestionsform')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(url)
+    return render(request, 'main/EnglishDocQuestionsForm.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+@allowed_users(allowed_roles=['staff'])
+def ClassSuggesstionform(request):
+    form = forms.ClassSuggesstion()
+    if request.method == 'POST':
+        form = forms.ClassSuggesstion(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            url = reverse('articles:ClassSuggesstionform')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(url)
+    return render(request, 'main/ClassSuggesstionForm.html', {'form': form})

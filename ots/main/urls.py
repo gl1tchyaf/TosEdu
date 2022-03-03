@@ -41,4 +41,7 @@ urlpatterns = [
     url(r'^docQuestionPage/$', views.docQuestionPage, name="docQuestionPage"),
     url(r'^docEnglishQuestionPage/$', views.docEnglishQuestionPage, name="docEnglishQuestionPage"),
     url(r'^classsuggession/$', views.sugesstion_class, name="classsuggession"),
+    url(r'^DocumentQuestionsForm/$', views.DocumentQuestionsform, name="DocumentQuestionsform"),
+    url(r'^EnglishDocQuestionsForm/$', views.EnglishDocQuestionsform, name="EnglishDocQuestionsform"),
+    url(r'^ClassSuggesstionForm/$', views.ClassSuggesstionform, name="ClassSuggesstionform"),
 ]

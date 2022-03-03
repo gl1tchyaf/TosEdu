@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" id="register-form" class="register-form" enctype="multipart/form-data">
+					{% csrf_token %}
+    <input type="hidden" name="csrfmiddlewaretoken" value="1lBqZOwGADikAvqjsVXra1OFp7HI6fJl2rkpUudZK0VONpLGvf5jLEmSfI1NwfgY">
+    <label for="id_classes">Classes:</label><select name="classes" id="id_classes">
+  <option value="1">Class One</option>
+
+  <option value="2">Class Two</option>
+
+  <option value="3">Class Three</option>
+
+  <option value="4">Class Four</option>
+
+  <option value="5">Class Five</option>
+
+  <option value="6">Class Six</option>
+
+  <option value="7">Class Seven</option>
+
+  <option value="8">Class Eight</option>
+
+  <option value="9">Class Nine</option>
+
+  <option value="10">Class Ten</option>
+
+</select>
+<label for="id_date">Date:</label><input type="date" name="date" required="" id="id_date">
+<label for="id_bangla">Bangla:</label><input type="text" name="bangla" maxlength="100" id="id_bangla">
+<label for="id_english">English:</label><input type="text" name="english" maxlength="100" id="id_english">
+<label for="id_math">Math:</label><input type="text" name="math" maxlength="100" id="id_math">
+<label for="id_science">Science:</label><input type="text" name="science" maxlength="100" id="id_science">
+<label for="id_social">Social:</label><input type="text" name="social" maxlength="100" id="id_social">
+<label for="id_islamReligion">IslamReligion:</label><input type="text" name="islamReligion" maxlength="100" id="id_islamReligion">
+<label for="id_hinduReligion">HinduReligion:</label><input type="text" name="hinduReligion" maxlength="100" id="id_hinduReligion">
+<label for="id_boudhuReligion">BoudhuReligion:</label><input type="text" name="boudhuReligion" maxlength="100" id="id_boudhuReligion">
+<label for="id_cristantianReligion">CristantianReligion:</label><input type="text" name="cristantianReligion" maxlength="100" id="id_cristantianReligion">
+<label for="id_artsAndCrafts">ArtsAndCrafts:</label><input type="text" name="artsAndCrafts" maxlength="100" id="id_artsAndCrafts">
+<label for="id_physicalEducation">PhysicalEducation:</label><input type="text" name="physicalEducation" maxlength="100" id="id_physicalEducation">
+<label for="id_music">Music:</label><input type="text" name="music" maxlength="100" id="id_music">
+<label for="id_comment">Comment:</label><input type="text" name="comment" maxlength="100" id="id_comment">
+
+
+    <button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up">Submit</button>
+
+</form>
+</body>
+</html>
