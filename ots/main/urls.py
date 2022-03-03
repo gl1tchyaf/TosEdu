@@ -33,7 +33,11 @@ urlpatterns = [
     url(r'^create_profile/$', views.createProfile, name="create_profile"),
 
     path('openDocx/<str:pk>/$', views.openDocx, name="openDocx"),
+    path('openEnglishDocx/<str:pk>/$', views.openEnglishDocx, name="openEnglishDocx"),
     url(r'^lessThanSix/$', views.lessThanSix, name="lessThanSix"),
+    url(r'^englishQuestions/$', views.englishQuestions, name="englishQuestions"),
     url(r'^showDoc/$', views.showDoc, name="showDoc"),
+    url(r'^showEnglishDoc/$', views.showEnglishDoc, name="showEnglishDoc"),
     url(r'^docQuestionPage/$', views.docQuestionPage, name="docQuestionPage"),
+    url(r'^docEnglishQuestionPage/$', views.docEnglishQuestionPage, name="docEnglishQuestionPage"),
 ]

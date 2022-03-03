@@ -1,0 +1,12 @@
+{{ doc.docx }}
+<form method="post" autocomplete="on" enctype="multipart/form-data">
+                                        {% csrf_token %}
+<textarea rows="60" cols="200" name="doc-Open">
+{% for para in data %}
+    {{para}}
+{% endfor %}
+</textarea>
+    <div class="col-sm-9 text-secondary">
+    <button type="submit" class="btn btn-primary px-4">Submit</button>
+	</div>
+</form>
