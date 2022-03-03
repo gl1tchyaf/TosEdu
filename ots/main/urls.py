@@ -40,4 +40,5 @@ urlpatterns = [
     url(r'^showEnglishDoc/$', views.showEnglishDoc, name="showEnglishDoc"),
     url(r'^docQuestionPage/$', views.docQuestionPage, name="docQuestionPage"),
     url(r'^docEnglishQuestionPage/$', views.docEnglishQuestionPage, name="docEnglishQuestionPage"),
+    url(r'^classsuggession/$', views.sugesstion_class, name="classsuggession"),
 ]
