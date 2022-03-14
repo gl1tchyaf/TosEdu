@@ -558,3 +558,34 @@ def ClassSuggesstionform(request):
             next = request.POST.get('next', '/')
             return HttpResponseRedirect(url)
     return render(request, 'main/ClassSuggesstionForm.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+def admitCard(request):
+    admitCard.instName = request.POST.get('inst-name')
+    admitCard.exam = request.POST.get('exam-name')
+    admitCard.stdName = request.POST.get('student-name')
+    admitCard.stdFatherName = request.POST.get('father-name')
+    admitCard.stdMotherName = request.POST.get('mother-name')
+    admitCard.stdClass = request.POST.get('class-number')
+    admitCard.stdRoll = request.POST.get('roll-number')
+
+    if admitCard.instName and admitCard.exam and admitCard.stdName and admitCard.stdFatherName and admitCard.stdMotherName and admitCard.stdClass and admitCard.stdRoll is not None:
+        return redirect('articles:admitCardGen')
+    return render(request, 'main/admitCard.html')
+
+
+@login_required(login_url="/account/login/")
+def admitCardGen(request):
+    print(admitCard.instName)
+    print(admitCard.exam)
+    print(admitCard.stdName)
+    print(admitCard.stdFatherName)
+    print(admitCard.stdMotherName)
+    print(admitCard.stdClass)
+    print(admitCard.stdRoll)
+    context = {'instName': admitCard.instName, 'exam': admitCard.exam, 'stdName': admitCard.stdName,
+               'stdFatherName': admitCard.stdFatherName, 'stdMotherName': admitCard.stdMotherName,
+               'stdClass': admitCard.stdClass, 'stdRoll': admitCard.stdRoll}
+    return render(request, 'main/admitCardGen.html', context)
+
