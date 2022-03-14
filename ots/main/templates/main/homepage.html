@@ -1,19 +1,504 @@
+<!DOCTYPE html>
 <html>
-<title>
-
-</title>
+<head>
+	<title>TosEdu Homepage</title>
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/static/css/all.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/lightbox.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/flexslider.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/jquery.rateyo.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mmenu.all.css" /> -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/meanmenu.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="/static/css/inner-page-style.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+</head>
 <body>
-    <h1>Your Institute: {{ user.institution }}</h1>
-    <h1>Your Point: {{ user.point }}</h1>
-    <a href="{% url 'articles:purchasePoint' %}">Buy Point</a>
-    <a href="{% url 'articles:canvas' %}">Question Maker</a>
-    <a href="{% url 'articles:user_profile' %}">User Profile</a>
-    <a href="{% url 'articles:lessThanSix' %}">Download Questions For small classes</a>
-    <a href="{% url 'articles:englishQuestions' %}">Download Questions English</a>
-<a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+	<div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
+		<header class="site-header">
+			<div class="top-header">
+				<div class="container">
+					<div class="top-header-left">
+						<div class="top-header-block">
+							<a href="mailto:info@tosedu" itemprop="email"><i class="fas fa-envelope"></i> info@tosedu</a>
+						</div>
+						<div class="top-header-block">
+							<a href="tel:+9779813639131" itemprop="telephone"><i class="fas fa-phone"></i> +977 9813639131</a>
+						</div>
+					</div>
+					<div class="top-header-right">
+						<div class="social-block">
+							<ul class="social-list">
+								<li><a href=""><i class="fab fa-viber"></i></a></li>
+								<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+								<li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+								<li><a href=""><i class="fab fa-facebook-messenger"></i></a></li>
+								<li><a href=""><i class="fab fa-twitter"></i></a></li>
+								<li><a href=""><i class="fab fa-skype"></i></a></li>
+							</ul>
+						</div>
+						<div class="login-block">
+							{% if user %}
+							<a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                                         {% csrf_token %}
                             <button type="submit" class="cr-btn cr-btn-sm">Logout</button>
                             </form>
                             </a>
+							{% else %}
+							<a href="">Login /</a>
+							<a href="">Register</a>
+							{% endif %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Top header Close -->
+			<div class="main-header">
+				<div class="container">
+					<div class="logo-wrap" itemprop="logo">
+						<img src="/static/images/site-logo.jpg" alt="Logo Image">
+						<!-- <h1>Education header</h1> -->
+					</div>
+					<div class="nav-wrap">
+						<nav class="nav-desktop">
+							<ul class="menu-list">
+								<li><a href="{% url 'articles:list' %}" style="padding-top: 3px;">Home</a></li>
+								<li class="menu-parent">Question Maker
+									<ul class="sub-menu">
+										<li><a href="{% url 'articles:canvas' %}">Question Canvas</a></li>
+										<li><a href="{% url 'articles:lessThanSix' %}">Class Less than Six</a></li>
+										<li><a href="{% url 'articles:englishQuestions' %}">English Question</a></li>
+										<li class="menu-parent">Child
+											<ul class="sub-menu">
+												<li><a href="">Grand-child</a></li>
+												<li><a href="">Grand-child</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li class="menu-parent">Routine & Admit
+									<ul class="sub-menu">
+										<li><a href="#">Routine</a></li>
+										<li><a href="#">Admit Card</a></li>
+									</ul>
+								</li>
+								<li><a href="">Lecture Planning</a></li>
+								<li><a href="">Portal</a></li>
+								<li><a href="">About</a></li>
+								<li><a href="{% url 'articles:user_profile' %}"><img src="/static/images/user.png" width="25" height="27"></a></li>
+								{% if user %}
+
+								<li><img src="/static/images/icons8-coin-25.png"><a href="{% url 'articles:purchasePoint' %}" style="text-decoration: none; font-size: 1.7em;">{{ user.point }}</a></li>
+								{% endif %}
+							</ul>
+						</nav>
+						<div id="bar">
+							<i class="fas fa-bars"></i>
+						</div>
+						<div id="close">
+							<i class="fas fa-times"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- Header Close -->
+
+		<div class="banner">
+			<div class="owl-four owl-carousel" itemprop="image">
+				<img src="/static/images/banner1.png" alt="Image of Bannner">
+				<img src="/static/images/page-banner2.jpg" alt="Image of Bannner">
+				<img src="/static/images/page-banner3.jpg" alt="Image of Bannner">
+			</div>
+			<div class="container" itemprop="description">
+				<h1>welcome to TosEdu Pro</h1>
+				<h3>With our advance features you can't imagine...</h3>
+			</div>
+			 <div id="owl-four-nav" class="owl-nav"></div>
+		</div>
+		<!-- <div class="banner">
+			<div class="owl-five owl-carousel owl-theme">
+	            <div class="item-video">
+            		<iframe width="100%" height="450" src="https://www.youtube.com/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            		</iframe>
+	            </div>
+	            <div class="item-video">
+	            	<iframe width="100%" height="450" src="https://www.youtube.com/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	            </div>
+	            <div class="item-video">
+	            	<iframe width="100%" height="450" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	            </div>
+	            <div class="item-video">
+            		<iframe width="100%" height="450" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            		</iframe>
+	            </div>
+	            <div class="item-video">
+	            	<iframe width="100%" height="450" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	            </div>
+	            <div class="item-video">
+	            	<iframe width="100%" height="450" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	            </div>
+          </div>
+		</div>
+		 Banner Close -->
+
+
+		 <div class="page-heading">
+			<div class="container">
+				<h2>popular courses</h2>
+			</div>
+		</div>
+
+		<div class="learn-courses">
+			<div class="container">
+				<div class="courses">
+					<div class="owl-one owl-carousel">
+						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+							<div class="img-wrap" itemprop="image"><img src="/static/images/course-pic.jpg" alt="courses picture"></div>
+								<a href="#" class="learn-desining-banner" itemprop="name">Learn Web Designing >>></a>
+							<div class="box-body" itemprop="description">
+								<p>Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum</p>
+								<section itemprop="time">
+									<p><span>Duration:</span> 4 Years</p>
+									<p><span>Class Time:</span> 6am-12am / 11am-5pm</p>
+									<p><span>Fee:</span> 4,00,000</p>
+								</section>
+							</div>
+						</div>
+
+						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+							<div class="img-wrap"  itemprop="image"><img src="/static/images/course-pic.jpg" alt="courses picture"></div>
+								<a href="#" class="learn-desining-banner" itemprop="name">Learn Web Designing >>></a>
+							<div class="box-body" itemprop="description">
+								<p>Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum</p>
+								<section itemprop="time">
+									<p><span>Duration:</span> 4 Years</p>
+									<p><span>Class Time:</span> 6am-12am / 11am-5pm</p>
+									<p><span>Fee:</span> 4,00,000</p>
+								</section>
+							</div>
+						</div>
+
+						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+							<div class="img-wrap"  itemprop="image"><img src="/static/images/course-pic.jpg" alt="courses picture"></div>
+								<a href="#" class="learn-desining-banner" itemprop="name">Learn Web Designing >>></a>
+							<div class="box-body" itemprop="description">
+								<p>Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum</p>
+								<section itemprop="time">
+									<p><span>Duration:</span> 4 Years</p>
+									<p><span>Class Time:</span> 6am-12am / 11am-5pm</p>
+									<p><span>Fee:</span> 4,00,000</p>
+								</section>
+							</div>
+						</div>
+
+						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+							<div class="img-wrap"  itemprop="image"><img src="/static/images/course-pic.jpg" alt="courses picture"></div>
+								<a href="#" class="learn-desining-banner" itemprop="name">Learn Web Designing >>></a>
+							<div class="box-body" itemprop="description">
+								<p>Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum</p>
+								<section itemprop="time">
+									<p><span>Duration:</span> 4 Years</p>
+									<p><span>Class Time:</span> 6am-12am / 11am-5pm</p>
+									<p><span>Fee:</span> 4,00,000</p>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Popular courses End -->
+
+
+		<section class="page-heading">
+			<div class="container">
+				<h2>gallery</h2>
+			</div>
+		</section>
+		<section class="gallery-images-section" itemprop="image" itemscope itemtype=" http://schema.org/ImageGallery">
+			<div class="gallery-img-wrap">
+				<a href="/static/images/gallery-img1.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+					<img src="/static/images/gallery-img1.jpg" alt="gallery-images">
+				</a>
+			</div>
+			<div class="gallery-img-wrap">
+				<a href="/static/images/gallery-img2.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+					<img src="/static/images/gallery-img2.jpg" alt="gallery-images">
+				</a>
+			</div>
+			<div class="gallery-img-wrap">
+				<a href="/static/images/gallery-img3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+					<img src="/static/images/gallery-img3.jpg" alt="gallery-images">
+				</a>
+			</div>
+			<div class="gallery-img-wrap">
+				<a href="/static/images/gallery-img4.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+					<img src="/static/images/gallery-img4.jpg" alt="gallery-images">
+				</a>
+			</div>
+			<div class="gallery-img-wrap">
+				<a href="/static/images/gallery-img5.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+					<img src="/static/images/gallery-img5.jpg" alt="gallery-images">
+				</a>
+			</div>
+			<div class="gallery-img-wrap">
+				<a href="/static/images/gallery-img6.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+					<img src="/static/images/gallery-img6.jpg" alt="gallery-images">
+				</a>
+			</div>
+			<div class="gallery-img-wrap">
+				<a href="/static/images/gallery-img7.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+					<img src="/static/images/gallery-img7.jpg" alt="gallery-images">
+				</a>
+			</div>
+			<div class="gallery-img-wrap">
+				<a href="/static/images/gallery-img8.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+					<img src="/static/images/gallery-img8.jpg" alt="gallery-images">
+				</a>
+			</div>
+			<div class="gallery-img-wrap">
+				<a href="/static/images/gallery-img9.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+					<img src="/static/images/gallery-img9.jpg" alt="gallery-images">
+				</a>
+			</div>
+			<div class="gallery-img-wrap">
+				<a href="/static/images/gallery-img10.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+					<img src="/static/images/gallery-img10.jpg" alt="gallery-images">
+				</a>
+			</div>
+			<div class="gallery-img-wrap">
+				<a href="/static/images/gallery-img11.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+					<img src="/static/images/gallery-img11.jpg" alt="gallery-images">
+				</a>
+			</div>
+			<div class="gallery-img-wrap">
+				<a href="/static/images/gallery-img12.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+					<img src="/static/images/gallery-img12.jpg" alt="gallery-images">
+				</a>
+			</div>
+		</section>
+		<!-- End of gallery Images -->
+
+		<section class="page-heading">
+			<div class="container">
+				<h2>latest news</h2>
+			</div>
+		</section>
+		<section class="latest-news">
+			<div class="container" itemprop="event" itemscope itemtype=" http://schema.org/Event">
+				<div class="owl-two owl-carousel">
+					<div class="news-wrap" itemprop="event">
+						<div class="news-img-wrap" itemprop="image">
+							<img src="/static/images/latest-new-img.jpg" alt="Latest News Images">
+						</div>
+						<div class="news-detail" itemprop="description">
+							<a href=""><h1>Orientation Programme for new Students.</h1></a>
+							<h2 itemprop="startDate">By Admin | 20 Dec. 2018</h2>
+
+							<p>Orientation Programme for new sffs Students. Orientatin Programmes for new Students.. Orientatin Programmes for new Students</p>
+						</div>
+					</div>
+
+					<div class="news-wrap" itemprop="event">
+						<div class="news-img-wrap" itemprop="image">
+							<img src="/static/images/latest-new-img.jpg" alt="Latest News Images">
+						</div>
+						<div class="news-detail" itemprop="description">
+							<a href=""><h1>Orientation Programme for new Students.</h1></a>
+							<h2 itemprop="startDate">By Admin | 20 Dec. 2022</h2>
+
+							<p>Orientation Programme for new sffs Students. Orientatin Programmes for new Students.. Orientatin Programmes for new Students</p>
+						</div>
+					</div>
+
+					<div class="news-wrap" itemprop="event">
+						<div class="news-img-wrap" itemprop="image">
+							<img src="/static/images/latest-new-img.jpg" alt="Latest News Images">
+						</div>
+						<div class="news-detail" itemprop="description">
+							<a href=""><h1>Orientation Programme for new Students.</h1></a>
+							<h2 itemprop="startDate">By Admin | 20 Dec. 2022</h2>
+
+							<p>Orientation Programme for new sffs Students. Orientatin Programmes for new Students.. Orientatin Programmes for new Students</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Latest News CLosed -->
+		<div class="learn-courses">
+			<div class="container">
+				<div class="courses">
+					<div class="owl-one owl-carousel">
+						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+							<div class="img-wrap" itemprop="image"><img src="/static/images/course-pic.jpg" alt="courses picture"></div>
+								<a href="#" class="learn-desining-banner" itemprop="name">Learn Web Designing >>></a>
+							<div class="box-body" itemprop="description">
+								<p>Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum</p>
+								<section itemprop="time">
+									<p><span>Duration:</span> 4 Years</p>
+									<p><span>Class Time:</span> 6am-12am / 11am-5pm</p>
+									<p><span>Fee:</span> 4,00,000</p>
+								</section>
+							</div>
+						</div>
+
+						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+							<div class="img-wrap"  itemprop="image"><img src="/static/images/course-pic.jpg" alt="courses picture"></div>
+								<a href="#" class="learn-desining-banner" itemprop="name">Learn Web Designing >>></a>
+							<div class="box-body" itemprop="description">
+								<p>Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum</p>
+								<section itemprop="time">
+									<p><span>Duration:</span> 4 Years</p>
+									<p><span>Class Time:</span> 6am-12am / 11am-5pm</p>
+									<p><span>Fee:</span> 4,00,000</p>
+								</section>
+							</div>
+						</div>
+
+						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+							<div class="img-wrap"  itemprop="image"><img src="/static/images/course-pic.jpg" alt="courses picture"></div>
+								<a href="#" class="learn-desining-banner" itemprop="name">Learn Web Designing >>></a>
+							<div class="box-body" itemprop="description">
+								<p>Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum</p>
+								<section itemprop="time">
+									<p><span>Duration:</span> 4 Years</p>
+									<p><span>Class Time:</span> 6am-12am / 11am-5pm</p>
+									<p><span>Fee:</span> 4,00,000</p>
+								</section>
+							</div>
+						</div>
+
+						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+							<div class="img-wrap"  itemprop="image"><img src="/static/images/course-pic.jpg" alt="courses picture"></div>
+								<a href="#" class="learn-desining-banner" itemprop="name">Learn Web Designing >>></a>
+							<div class="box-body" itemprop="description">
+								<p>Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum</p>
+								<section itemprop="time">
+									<p><span>Duration:</span> 4 Years</p>
+									<p><span>Class Time:</span> 6am-12am / 11am-5pm</p>
+									<p><span>Fee:</span> 4,00,000</p>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Learn courses End -->
+		<section class="whyUs-section">
+			<div class="container">
+				<div class="featured-points">
+					<ul>
+						<li><i class="fas fa-book"></i> Make question for any class</li>
+						<li><i class="fas fa-money-check-alt"></i>Make Admit Card or Routine</li>
+						<li><i class="fas fa-chalkboard-teacher"></i> Find your lecture planning</li>
+						<li> <i class="fas fa-book"></i> A potal for teahcers</li>
+					</ul>
+				</div>
+				<div class="whyus-wrap">
+					<h1>why us?</h1>
+					<p itemprop="description">Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsumLorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsumLorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsumLorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsumLorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsumLorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum</p>
+
+					<a href="#" class="read-more-btn">read more</a>
+				</div>
+			</div>
+		</section>
+		<!-- Closed WhyUs section -->
+		<section class="query-section">
+			<div class="container">
+				<p>Any Queries? Ask us a question at<a href="tel:+9779813639131"><i class="fas fa-phone"></i> +977 9813639131</a></p>
+			</div>
+		</section>
+		<!-- End of Query Section -->
+		<footer class="page-footer" itemprop="footer" itemscope itemtype="http://schema.org/WPFooter">
+			<div class="footer-first-section">
+				<div class="container">
+					<div class="box-wrap" itemprop="about">
+						<header>
+							<h1>about</h1>
+						</header>
+						<p>TosEdu a great start for our education  institute. It's very easy to use and important for teachers</p>
+
+						<h4><a href="tel:+9779813639131"><i class="fas fa-phone"></i> +977 9813639131</a></h4>
+						<h4><a href="mailto:info@tosedu"><i class="fas fa-envelope"></i> info@tosedu</a></h4>
+						<h4><a href=""><i class="fas fa-map-marker-alt"></i>Gazipur, Dhaka, Bangladesh</a></h4>
+					</div>
+
+
+
+					<div class="box-wrap">
+						<header>
+							<h1>recent courses</h1>
+						</header>
+						<div class="recent-course-wrap">
+							<img src="/static/images/ui-ux.jpg" alt="Ui/Ux Designing">
+							<a href=""><div class="course-name">
+								<h3>UI/UX Designer courses</h3>
+								<p><span>$50</span> $40</p>
+							</div></a>
+						</div>
+						<div class="recent-course-wrap">
+							<img src="/static/images/ui-ux.jpg" alt="Ui/Ux Designing">
+							<a href=""><div class="course-name">
+								<h3>UI/UX Designer courses</h3>
+								<p><span>$50</span> $40</p>
+							</div></a>
+						</div>
+					</div>
+
+					<div class="box-wrap">
+						<header>
+							<h1>quick contact</h1>
+						</header>
+						<section class="quick-contact">
+							<input type="email" name="email" placeholder="Your Email*">
+							<textarea placeholder="Type your message*"></textarea>
+							<button>send message</button>
+						</section>
+					</div>
+
+				</div>
+			</div>
+			<!-- End of box-Wrap -->
+			<div class="footer-second-section">
+				<div class="container">
+					<hr class="footer-line">
+					<ul class="social-list">
+						<li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+						<li><a href=""><i class="fab fa-twitter"></i></a></li>
+						<li><a href=""><i class="fab fa-skype"></i></a></li>
+						<li><a href=""><i class="fab fa-youtube"></i></a></li>
+						<li><a href=""><i class="fab fa-instagram"></i></a></li>
+					</ul>
+					<hr class="footer-line">
+				</div>
+			</div>
+			<div class="footer-last-section">
+				<div class="container">
+					<p>Copyright 2022 &copy; tosedu.com <span> | </span> Designed and developed by Fahim & Rafsan & Maruf<a href="https://labtheme.com">....</a></p>
+				</div>
+			</div>
+		</footer>
+
+
+
+	</div>
+	<script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/lightbox.js"></script>
+	<script type="text/javascript" src="/static/js/all.js"></script>
+	<script type="text/javascript" src="/static/js/isotope.pkgd.min.js"></script>
+	<script type="text/javascript" src="/static/js/owl.carousel.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.rateyo.js"></script>
+	<!-- <script type="text/javascript" src="js/jquery.mmenu.all.js"></script> -->
+	<!-- <script type="text/javascript" src="js/jquery.meanmenu.min.js"></script> -->
+	<script type="text/javascript" src="/static/js/custom.js"></script>
 </body>
 </html>
