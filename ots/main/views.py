@@ -569,6 +569,7 @@ def admitCard(request):
     admitCard.stdMotherName = request.POST.get('mother-name')
     admitCard.stdClass = request.POST.get('class-number')
     admitCard.stdRoll = request.POST.get('roll-number')
+    admitCard.headMaster = request.POST.get('head-master')
 
     if admitCard.instName and admitCard.exam and admitCard.stdName and admitCard.stdFatherName and admitCard.stdMotherName and admitCard.stdClass and admitCard.stdRoll is not None:
         return redirect('articles:admitCardGen')
@@ -579,6 +580,6 @@ def admitCard(request):
 def admitCardGen(request):
     context = {'instName': admitCard.instName, 'exam': admitCard.exam, 'stdName': admitCard.stdName,
                'stdFatherName': admitCard.stdFatherName, 'stdMotherName': admitCard.stdMotherName,
-               'stdClass': admitCard.stdClass, 'stdRoll': admitCard.stdRoll}
+               'stdClass': admitCard.stdClass, 'stdRoll': admitCard.stdRoll, 'headMaster': admitCard.headMaster}
     return render(request, 'main/admitCardGen.html', context)
 
