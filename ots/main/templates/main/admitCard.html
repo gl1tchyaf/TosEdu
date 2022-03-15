@@ -1,22 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
 </head>
 <body>
-    <form class="jotform-form probootstrap-form" method="post" name="form_213521348385456" id="213521348385456" accept-charset="utf-8" autocomplete="on">
+
+<h2 align="center">Admit Card Information</h2>
+
+<div class="container">
+  <form class="jotform-form probootstrap-form" method="post" name="form_213521348385456" id="213521348385456" accept-charset="utf-8" autocomplete="on">
 	{% csrf_token %}
-        Enter Institute Name: <input type="text" name="inst-name"><br>
-        Enter Examination: <input type="text" name="exam-name"><br>
-        Enter Student Name: <input type="text" name="student-name"><br>
-        Enter Student's Father Name: <input type="text" name="father-name"><br>
-        Enter Student's Mother Name: <input type="text" name="mother-name"><br>
-        Enter Student's Class: <input type="text" name="class-number"><br>
-        Enter Student's Roll Number: <input type="text" name="roll-number"><br>
-         <button type="submit" class="form-submit-button submit-button jf-form-buttons">
-              Submit
-            </button>
-    </form>
+    <div class="row">
+      <div class="col-25">
+        <label for="iname">Enter Institute Name:</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="iname" name="inst-name" placeholder="Institute Name..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="ename">Enter Examination:</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="ename" name="exam-name" placeholder="Examination..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="sname">Enter Student Name:</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="sname" name="student-name" placeholder="Student Name..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Enter Student's Father Name:</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="father-name" placeholder="Student's Father Name..">
+      </div>
+    </div>
+	<div class="row">
+      <div class="col-25">
+        <label for="mname">Enter Student's Mother Name:</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="mname" name="mother-name" placeholder="Student's Mother Name..">
+      </div>
+    </div>
+	<div class="row">
+      <div class="col-25">
+        <label for="class">Enter Student's Class:</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="class" name="class-number" placeholder="Student's Class..">
+      </div>
+    </div>
+	<div class="row">
+      <div class="col-25">
+        <label for="roll">Enter Student's Roll Number:</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="roll" name="roll-number" placeholder="Student's Roll Number..">
+      </div>
+    </div>
+	<br>
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>
+
 </body>
 </html>

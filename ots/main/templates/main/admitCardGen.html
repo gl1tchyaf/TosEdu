@@ -1,10 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <style>
+        * {
+  box-sizing: border-box;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.db {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.db {
+  border: none;
+  cursor: pointer;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+.row{
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+h1 {
+  margin: auto;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, .db {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+    </style>
 </head>
 <body>
-admit card baby
+<div class="container center">
+	<div class="row" align="center">
+      <h1>{{ instName }}</h1>
+    </div>
+    <br>
+    <div class="row" align="center">
+      <h1>{{ exam }}</h1>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="sname">Enter Student Name:</label>
+      </div>
+      <div class="col-75">
+        <p class="db" type="text" id="sname">{{ stdName }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Enter Student's Father Name:</label>
+      </div>
+      <div class="col-75">
+        <p class="db" type="text" id="fname">{{ stdFatherName }}</p>
+      </div>
+    </div>
+	<div class="row">
+      <div class="col-25">
+        <label for="mname">Enter Student's Mother Name:</label>
+      </div>
+      <div class="col-75">
+        <p class="db" type="text" id="mname">{{ stdMotherName }}</p>
+      </div>
+    </div>
+	<div class="row">
+      <div class="col-25">
+        <label for="class">Enter Student's Class:</label>
+      </div>
+      <div class="col-75">
+          <p class="db" type="text" id="class">{{ stdClass }}</p>
+      </div>
+    </div>
+	<div class="row">
+      <div class="col-25">
+        <label for="roll">Enter Student's Roll Number:</label>
+      </div>
+      <div class="col-75">
+        <p class="db" type="text" id="roll">{{ stdRoll }}</p>
+      </div>
+    </div>
+	<br>
+    <div class="row">
+        <p>এতদ্বরা “শহীদ নিয়মত এডুকেশন হোম” এর সকল ছাত্র/ছাত্রী ও অভিভাবকদের জানানো যাচ্ছে যে, ছাত্র/ছাত্রীদের  পরীক্ষা শুরু হওয়ার ১৫মিনিট পূর্বে প্রবেশ পত্র সাথে নিয়ে পরীক্ষার হলে প্রবেশ করতে হবে।</p>
+    </div>
+    <div class="row">
+        <p align="right">প্রধান শিক্ষক<br>
+মোঃ হাসানুল ইসলাম
+</p>
+    </div>
+</div>
 </body>
 </html>
