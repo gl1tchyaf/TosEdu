@@ -577,13 +577,6 @@ def admitCard(request):
 
 @login_required(login_url="/account/login/")
 def admitCardGen(request):
-    print(admitCard.instName)
-    print(admitCard.exam)
-    print(admitCard.stdName)
-    print(admitCard.stdFatherName)
-    print(admitCard.stdMotherName)
-    print(admitCard.stdClass)
-    print(admitCard.stdRoll)
     context = {'instName': admitCard.instName, 'exam': admitCard.exam, 'stdName': admitCard.stdName,
                'stdFatherName': admitCard.stdFatherName, 'stdMotherName': admitCard.stdMotherName,
                'stdClass': admitCard.stdClass, 'stdRoll': admitCard.stdRoll}
