@@ -491,28 +491,66 @@ def docEnglishQuestionPage(request):
     return render(request, 'main/docQuestionPage.html', context)
 
 
+def classSugesstionChoser(request):
+    classSugesstionChoser.classInput = ""
+    classSugesstionChoser.classInput = request.POST.get('class-Input')
+    if classSugesstionChoser.classInput is not None:
+        return redirect('articles:classsuggession')
+    return render(request, 'main/clsSugCho.html')
+
+
 @login_required(login_url="/account/login/")
 def sugesstion_class(request):
     today = date.today()
     print(today.weekday())
     month, day = today.month, today.day
-    instance = class_suggesstion.objects.filter(classes=1)
+    instance = class_suggesstion.objects.filter(classes=classSugesstionChoser.classInput)
+    context = {}
+    context['weekday'] = 'None'
+    if today.weekday()==0:
+        context['weekday'] = 'Monday'
+    elif today.weekday()==1:
+        context['weekday'] = 'Tuesday'
+    elif today.weekday()==2:
+        context['weekday'] = 'Wednesday'
+    elif today.weekday()==3:
+        context['weekday'] = 'Thursday'
+    elif today.weekday()==4:
+        context['weekday'] = 'Friday'
+    elif today.weekday()==5:
+        context['weekday'] = 'Saturday'
+    elif today.weekday()==6:
+        context['weekday'] = 'Sunday'
+
+    context['bangla'] = 'None'
+    context['english'] = 'None'
+    context['math'] = 'None'
+    context['science'] = 'None'
+    context['social'] = 'None'
+    context['islamReligion'] = 'None'
+    context['hinduReligion'] = 'None'
+    context['boudhuReligion'] = 'None'
+    context['cristantianReligion'] = 'None'
+    context['artsAndCrafts'] = 'None'
+    context['physicalEducation'] = 'None'
+    context['music'] = 'None'
+    context['comment'] = 'None'
     for i in instance:
         if i.date.month == month and i.date.day == day:
-            print(i.bangla)
-            print(i.english)
-            print(i.math)
-            print(i.science)
-            print(i.social)
-            print(i.islamReligion)
-            print(i.hinduReligion)
-            print(i.boudhuReligion)
-            print(i.cristantianReligion)
-            print(i.artsAndCrafts)
-            print(i.physicalEducation)
-            print(i.music)
-            print(i.comment)
-    return render(request, 'main/suggesstion_class.html')
+            context['bangla'] = i.bangla
+            context['english'] = i.english
+            context['math'] = i.math
+            context['science'] = i.science
+            context['social'] = i.social
+            context['islamReligion'] = i.islamReligion
+            context['hinduReligion'] = i.hinduReligion
+            context['boudhuReligion'] = i.boudhuReligion
+            context['cristantianReligion'] = i.cristantianReligion
+            context['artsAndCrafts'] = i.artsAndCrafts
+            context['physicalEducation'] = i.physicalEducation
+            context['music'] = i.music
+            context['comment'] = i.comment
+    return render(request, 'main/suggesstion_class.html', context)
 
 
 @login_required(login_url="/account/login/")

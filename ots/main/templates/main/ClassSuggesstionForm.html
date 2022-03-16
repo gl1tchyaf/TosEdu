@@ -7,29 +7,15 @@
 <body>
 <form method="POST" id="register-form" class="register-form" enctype="multipart/form-data">
 					{% csrf_token %}
-    <input type="hidden" name="csrfmiddlewaretoken" value="1lBqZOwGADikAvqjsVXra1OFp7HI6fJl2rkpUudZK0VONpLGvf5jLEmSfI1NwfgY">
-    <label for="id_classes">Classes:</label><select name="classes" id="id_classes">
-  <option value="1">Class One</option>
+    <label for="id_classes">Classes:</label>
+    <select name="classes" id="id_classes">
+    <option value="1">Class One</option>
+    <option value="2">Class Two</option>
+    <option value="3">Class Three</option>
+    <option value="4">Class Four</option>
+    <option value="5">Class Five</option>
+    </select>
 
-  <option value="2">Class Two</option>
-
-  <option value="3">Class Three</option>
-
-  <option value="4">Class Four</option>
-
-  <option value="5">Class Five</option>
-
-  <option value="6">Class Six</option>
-
-  <option value="7">Class Seven</option>
-
-  <option value="8">Class Eight</option>
-
-  <option value="9">Class Nine</option>
-
-  <option value="10">Class Ten</option>
-
-</select>
 <label for="id_date">Date:</label><input type="date" name="date" required="" id="id_date">
 <label for="id_bangla">Bangla:</label><input type="text" name="bangla" maxlength="100" id="id_bangla">
 <label for="id_english">English:</label><input type="text" name="english" maxlength="100" id="id_english">
