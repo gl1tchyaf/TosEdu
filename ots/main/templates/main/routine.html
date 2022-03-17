@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1 align="center">Nobodoy Ideal School & College</h1>
+    <h2 align="center">TIME TABLE</h2>
+    <h2 align="center">Class Play to Ten</h2>
+    <form method="POST">
+        {% csrf_token %}
+    <table border="5" cellspacing="0" align="center">
+        <!--<caption>Timetable</caption>-->
+        <tr>
+            <td align="center" height="50"
+                width="100"><br>
+                <b>Class</b></br>
+            </td>
+            <td align="center" height="50"
+                width="100" colspan="7">
+                <b>Date, Weekday & Subject</b>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" height="50"
+                width="100">
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <input type="date" name="date" placeholder="Date..">
+                <input type="text" name="weekday" placeholder="Weekday..">
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <input type="date" name="date2" placeholder="Date..">
+                <input type="text" name="weekday2" placeholder="Weekday..">
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <input type="date" name="date3" placeholder="Date..">
+                <input type="text" name="weekday3" placeholder="Weekday..">
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <input type="date" name="date4" placeholder="Date..">
+                <input type="text" name="weekday4" placeholder="Weekday..">
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <input type="date" name="date5" placeholder="Date..">
+                <input type="text" name="weekday5" placeholder="Weekday..">
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <input type="date" name="date6" placeholder="Date..">
+                <input type="text" name="weekday6" placeholder="Weekday..">
+            </td>
+            <td align="center" height="50"
+                width="100">
+                <input type="date" name="date7" placeholder="Date..">
+                <input type="text" name="weekday7" placeholder="Weekday..">
+            </td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Play</b></td>
+            <td align="center" height="50"><input type="text" name="p1" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="p2" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="p3" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="p4" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="p5" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="p6" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="p7" placeholder="Subject.."></td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Nursery</b>
+            </td>
+            <td align="center" height="50"><input type="text" name="n1" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="n2" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="n3" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="n4" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="n5" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="n6" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="n7" placeholder="Subject.."></td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Class 1</b>
+            </td>
+            <td align="center" height="50"><input type="text" name="c11" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c12" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c13" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c14" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c15" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c16" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c17"placeholder="Subject.."></td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Class 2</b>
+            </td>
+            <td align="center" height="50"><input type="text" name="c21" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c22" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c23" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c24" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c25" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c26" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c27"placeholder="Subject.."></td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Class 3</b>
+            </td>
+            <td align="center" height="50"><input type="text" name="c31" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c32" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c33" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c34" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c35" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c36" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c37"placeholder="Subject.."></td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Class 4</b>
+            </td>
+            <td align="center" height="50"><input type="text" name="c41" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c42" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c43" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c44" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c45" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c46" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c47"placeholder="Subject.."></td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Class 5</b>
+            </td>
+            <td align="center" height="50"><input type="text" name="c51" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c52" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c53" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c54" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c55" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c56" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c57"placeholder="Subject.."></td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Class 6</b>
+            </td>
+            <td align="center" height="50"><input type="text" name="c61" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c62" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c63" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c64" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c65" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c66" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c67"placeholder="Subject.."></td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Class 7</b>
+            </td>
+            <td align="center" height="50"><input type="text" name="c71" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c72" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c73" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c74" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c75" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c76" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c77"placeholder="Subject.."></td>
+        </tr>
+        <tr>
+            <td align="center" height="50">
+                <b>Class 8</b>
+            </td>
+            <td align="center" height="50"><input type="text" name="c81" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c82" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c83" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c84" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c85" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c86" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c87"placeholder="Subject.."></td>
+        </tr>
+        <tr>
+            <td align="center" height="50"><b>Class 9</b></td>
+            <td align="center" height="50"><input type="text" name="c91" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c92" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c93" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c94" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c95" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c96" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c97"placeholder="Subject.."></td>
+        </tr>
+        <tr>
+            <td align="center" height="50"><b>Class 10</b></td>
+            <td align="center" height="50"><input type="text" name="c101" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c102" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c103" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c104" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c105" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c106" placeholder="Subject.."></td>
+            <td align="center" height="50"><input type="text" name="c107"placeholder="Subject.."></td>
+        </tr>
+    </table>
+    <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

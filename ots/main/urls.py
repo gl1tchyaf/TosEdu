@@ -49,4 +49,7 @@ urlpatterns = [
 
     url(r'^admitCardGenerator/$', views.admitCard, name="admitCard"),
     url(r'^admitCardGeneratorPage/$', views.admitCardGen, name="admitCardGen"),
+
+    url(r'^routine/$', views.routine, name="routine"),
+    url(r'^routinePrint/$', views.routinePrint, name="routinePrint"),
 ]
