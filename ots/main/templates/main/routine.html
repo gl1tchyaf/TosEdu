@@ -2,10 +2,11 @@
 <html>
 
 <body>
-    <h1 align="center">Nobodoy Ideal School & College</h1>
+
+    <form method="POST">
+        <h1 align="center"><input type="text" name="school-name" placeholder="Enter School Name"></h1>
     <h2 align="center">TIME TABLE</h2>
     <h2 align="center">Class Play to Ten</h2>
-    <form method="POST">
         {% csrf_token %}
     <table border="5" cellspacing="0" align="center">
         <!--<caption>Timetable</caption>-->

@@ -722,7 +722,8 @@ def routine(request):
     routine.c105 = request.POST.get('c105')
     routine.c106 = request.POST.get('c106')
     routine.c107 = request.POST.get('c107')
-    if routine.weekday and routine.date:
+    routine.schoolName = request.POST.get('school-name')
+    if routine.weekday and routine.date and routine.schoolName:
         return redirect('articles:routinePrint')
     return render(request, 'main/routine.html')
 
@@ -749,5 +750,5 @@ def routinePrint(request):
                'c83': routine.c83, 'c84': routine.c84, 'c85': routine.c85, 'c86': routine.c86, 'c87': routine.c87,
                'c91': routine.c91, 'c92': routine.c92, 'c93': routine.c93, 'c94': routine.c94, 'c95': routine.c95,
                'c96': routine.c96, 'c97': routine.c97, 'c101': routine.c101, 'c102': routine.c102, 'c103': routine.c103,
-               'c104': routine.c104, 'c105': routine.c105, 'c106': routine.c106, 'c107': routine.c107}
+               'c104': routine.c104, 'c105': routine.c105, 'c106': routine.c106, 'c107': routine.c107, 'schoolName': routine.schoolName}
     return render(request, 'main/routinePrint.html', context)
