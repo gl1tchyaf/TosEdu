@@ -1,457 +1,249 @@
-{% extends 'base_layout.html' %}
-
-
-{% block content %}
-{% load static %}
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="/static/header/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/static/header/css/plugins.css">
-  <link rel="stylesheet" href="/static/header/style.css">
-
-  <!-- Modernizer js -->
-  <script src="/static/header/js/vendor/modernizr-3.5.0.min.js"></script>
-
-      <!-- Favicons -->
-      <link href="/static/ca/img/favicon.png" rel="icon">
-      <link href="/static/ca/img/apple-touch-icon.png" rel="apple-touch-icon">
-    
-      <!-- Google Fonts -->
-      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-    
-      <!-- Vendor CSS Files -->
-      <link href="/static/ca/assets/vendor/aos/aos.css" rel="stylesheet">
-      <link href="/static/ca/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      <link href="/static/ca/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-      <link href="/static/ca/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-      <link href="/static/ca/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-      <link href="/static/ca/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-      <link href="/static/ca/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    
-      <!-- Template Main CSS File -->
-      <link href="/static/ca/css/style.css" rel="stylesheet">
-      <meta charset="utf-8">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>TosEdu Homepage</title>
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/static/css/all.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/lightbox.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/flexslider.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/jquery.rateyo.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mmenu.all.css" /> -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/meanmenu.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="/static/css/inner-page-style.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
 </head>
+<body>
+	<div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
+		<header class="site-header">
+			<div class="top-header">
+				<div class="container">
+					<div class="top-header-left">
+						<div class="top-header-block">
+							<a href="mailto:tostechllc@gmail.com" itemprop="email"><i class="fas fa-envelope"></i> tostechllc@gmail.com</a>
+						</div>
+						<div class="top-header-block"><a href="tel:+8801921189005" itemprop="telephone"><i class="fas fa-phone"></i> +8801921189005</a>
+						</div>
+					</div>
+					<div class="top-header-right">
+						<div class="social-block">
+							<ul class="social-list">
 
-  <body>
-     <div class="entire-content">
-     
-     <!--------Navigation starts-------->
-          <!-- Header -->
-          <header class="header header-style transparent-header sticky-header">
-              <div class="container d-none d-lg-block">
-                  <div class="row">
-                      <div class="col-lg-12">
-                          <div class="header-inner">
-                              <div class="logo">
-                                  <a href="index.html">
-                                      <img src="/static/header/img/logo1.png" alt="logo" height="70px" width="150px">
-                                  </a>
-                              </div>
-                              <nav class="menu">
-                                  <ul>
-                                      <li>
-                                          <a href="index.html">Home</a>
-                                      </li>
-                                      <li>
-                                          <a href="about">About</a>
-                                      </li>
-                                      <li>
-                                          <a href="#">Services</a>
-                                      </li>
-                                      <li class="cr-dropdown">
-                                          <a href="javascript:;">Pages</a>
-                                          <ul>
-                                              <li class="cr-sub-dropdown">
-                                                  <a href="javascript:;">Home</a>
-                                                  <ul>
-                                                      <li>
-                                                          <a href="index.html">Home</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="single.html">Single</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="contact.html">Contact</a>
-                                                      </li>
-                                                  </ul>
-                                              </li>
-                                              <li class="cr-sub-dropdown">
-                                                  <a href="javascript:;">Single</a>
-                                                  <ul>
-                                                      <li>
-                                                          <a href="index.html">Home</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="single.html">Single</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="contact.html">Contact</a>
-                                                      </li>
-                                                  </ul>
-                                              </li>
-                                              <li class="cr-sub-dropdown">
-                                                  <a href="javascript:;">Contact</a>
-                                                  <ul>
-                                                      <li>
-                                                          <a href="index.html">Home</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="single.html">Single</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="contact.html">Contact</a>
-                                                      </li>
-                                                  </ul>
-                                              </li>
-                                              <li>
-                                                  <a href="#">FAQ</a>
-                                              </li>
-                                              <li>
-                                                  <a href="#">Team</a>
-                                              </li>
-                                              <li>
-                                                  <a href="#">Videos</a>
-                                              </li>
-                                          </ul>
-                                      </li>
-                                      <li class="cr-megamenu">
-                                          <a href="javascript:;">Features</a>
-                                          <div class="cr-megamenu-wrap">
-  
-                                              <!-- Megamenu Single Block -->
-                                              <div class="cr-megamenu-single">
-                                                  <h6>Widget Header</h6>
-                                                  <ul>
-                                                      <li>
-                                                          <a href="#">Awesome Features</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">Clean Interface</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">Responsive Design</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">Pixel Perfect Design</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">W3C Validate</a>
-                                                      </li>
-                                                  </ul>
-                                              </div>
-                                              <!--// Megamenu Single Block -->
-  
-                                              <!-- Megamenu Single Block -->
-                                              <div class="cr-megamenu-single">
-                                                  <h6>Widget Header</h6>
-                                                  <ul>
-                                                      <li>
-                                                          <a href="#">Awesome Features</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">Clean Interface</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">Responsive Design</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">Pixel Perfect Design</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">W3C Validate</a>
-                                                      </li>
-                                                  </ul>
-                                              </div>
-                                              <!--// Megamenu Single Block -->
-  
-                                              <!-- Megamenu Single Block -->
-                                              <div class="cr-megamenu-single">
-                                                  <h6>Widget Header</h6>
-                                                  <ul>
-                                                      <li>
-                                                          <a href="#">Awesome Features</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">Clean Interface</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">Responsive Design</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">Pixel Perfect Design</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">W3C Validate</a>
-                                                      </li>
-                                                  </ul>
-                                              </div>
-                                              <!--// Megamenu Single Block -->
-  
-                                              <!-- Megamenu Single Block -->
-                                              <div class="cr-megamenu-single">
-                                                  <h6>Widget Header</h6>
-                                                  <ul>
-                                                      <li>
-                                                          <a href="#">Awesome Features</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">Clean Interface</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">Responsive Design</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">Pixel Perfect Design</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="#">W3C Validate</a>
-                                                      </li>
-                                                  </ul>
-                                              </div>
-                                              <!--// Megamenu Single Block -->
-                                              
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <a href="contact_new">Contact</a>
-                                      </li>
-                                  </ul>
-                              </nav>
-                              <a href="javascript:;" class="cr-btn cr-btn-sm">
-                                  <span>{{ user.username }}</span>
-                              </a>
-                                  <a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-                                          {% csrf_token %}
-                              <button type="submit" class="cr-btn cr-btn-sm">Logout</button>
-                              </form>
-                          </a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-  
-              <!-- Mobile Menu -->
-              <div class="mobile-menu-wrapper">
-                  <div class="container d-block d-lg-none">
-                      <div class="mobile-menu clearfix">
-                          <a class="mobile-logo" href="index.html">
-                              <img src="images/logo.png" alt="mobile logo">
-                          </a>
-                          <a href="" class="cr-btn cr-btn-sm">
-                              <span>Buy now</span>
-                          </a>
-                      </div>
-                  </div>
-              </div>
-  
-              <!-- //Mobile Menu -->           
-  
-          </header>
-          <!-- //Header -->
-      <!--------Navigation Ends-------->
-     
-       <!---------------Slider section starts------------->
-       <section class="slider text-center" id="slider">              
-           <div class="slider-overlay">
-               <div class="slider-content">
-                   <div class="icons">
-                       <!-- <i class="fa fa-apple"></i>
-                       <i class="fa fa-android"></i>
-                       <i class="fa fa-windows"></i> -->
-                   </div>
-                   <br>
-                   <div class="text"></div>
-                   <div class="cta-div">
-                       <a href="{% url 'articles:contact' %}" class="btn1">CONTACT US!</a>
-                       <a href="" class="btn2"> Explore !</a>
-                   </div>
-                   <br><br>
-                   <div class="social-networks">
-                       <a href="" class="fa fa-facebook"></a>
-                       <a href="" class="fa fa-twitter"></a>
-                       <a href="" class="fa fa-windows"></a>
-                       <a href="" class="fa fa-reddit"></a>
-                       <a href="" class="fa fa-linkedin"></a>
-                       <a href="" class="fa fa-cog"></a>
-                   </div>                      
-               </div>                  
-           </div>       
-       </section>
-<!---------------Slider section ends------------->
+								<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+								<li><a href="https://www.facebook.com/fantosfast/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+								<li><a href="https://www.facebook.com/fantosfast/"target="_blank"><i class="fab fa-facebook-messenger"></i></a></li>
+								<li><a href=""><i class="fab fa-twitter"></i></a></li>
+								<li><a href=""><i class="fab fa-skype"></i></a></li>
+							</ul>
+						</div>
+						<div class="login-block">
+							{% if user %}
+							<a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                        {% csrf_token %}
+                            <button type="submit" class="cr-btn cr-btn-sm">Logout</button>
+                            </form>
+                            </a>
+							{% else %}
+							<a href="">Login /</a>
+							<a href="">Register</a>
+							{% endif %}
 
-<!-- ======= About Us Section ======= -->
-      <section id="about" class="about">
-        <div class="container" data-aos="fade-up">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Top header Close -->
+			<div class="main-header">
+				<div class="container">
+					<div class="logo-wrap" itemprop="logo">
+						<img src="/static/images/site-logo.png" alt="Logo Image">
+						<!-- <h1>Education header</h1> -->
+					</div>
+					<div class="nav-wrap">
+						<nav class="nav-desktop">
+							<ul class="menu-list">
+								<li><a href="{% url 'articles:list' %}" style="padding-top: 3px;">Home</a></li>
+								<li class="menu-parent">Question Maker
+									<ul class="sub-menu">
+										<li><a href="{% url 'articles:canvas' %}">Question Canvas</a></li>
+										<li><a href="{% url 'articles:lessThanSix' %}">Class Less than Six</a></li>
+										<li><a href="{% url 'articles:englishQuestions' %}">English Question</a></li>
 
-          <div class="section-title">
-            <h2>About Us</h2>
-          </div>
+									</ul>
+								</li>
+								<li class="menu-parent">Routine & Admit
+									<ul class="sub-menu">
+										<li><a href="{% url 'articles:routine' %}">Routine</a></li>
+										<li><a href="{% url 'articles:admitCard' %}">Admit Card</a></li>
+									</ul>
+								</li>
 
-          <div class="row content">
-            <div class="col-lg-6">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <ul>
-                <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-              </ul>
-            </div>
-            <div class="col-lg-6 pt-4 pt-lg-0">
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-<!-- End About Us Section -->
-<!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
-      <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Team</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-6">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-              <div class="pic"><img src="/static/ca/img/team/team-1.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Md.Mohsin Uddin</h4>
-                <span>Senior Lecturer</span>
-                <p>Department of Computer Science & Engineering</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mt-4 mt-lg-0">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
-              <div class="pic"><img src="/static/ca/img/team/team-2.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Rashik Buksh Rafsan</h4>
-                <span>Developer</span>
-                <p>Department of Computer Science & Engineering</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
-              <div class="pic"><img src="/static/ca/img/team/team-3.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Fahadul Islam</h4>
-                <span>Developer</span>
-                <p>Department of Computer Science & Engineering</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
-              <div class="pic"><img src="/static/ca/img/team/team-4.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Hasib Ar Rafiul Fahim</h4>
-                <span>Developer</span>
-                <p>Department of Computer Science & Engineering</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-<!-- End Team Section -->
+								<li class="menu-parent">Lecture Planning
+									<ul class="sub-menu">
+										<li><a href="">Class 1</a></li>
+										<li><a href="">Class 2</a></li>
+										<li><a href="">Class 3</a></li>
+										<li><a href="">Class 4</a></li>
+										<li><a href="">Class 5</a></li>
+									</ul>
+								</li>
 
 
 
 
-<!-------------Footer markups--------------->
-      
-<footer class="footer">
-  <div class="container">
-      <div class="row">
-          <div class="col-sm-12 text-center">
-              <div class="social-icon">
-                <a href=""><i class="fa fa-facebook wow fadeInLeft" data-wow-duration=".3s" data-wow-delay=".3s" ></i></a>  
-                <a href=""><i class="fa fa-twitter wow fadeInLeft" data-wow-duration=".6s" data-wow-delay=".6s"></i></a>  
-                <a href=""><i class="fa fa-google-plus wow fadeInLeft" data-wow-duration=".9s" data-wow-delay=".9s"></i></a>  
-                <a href=""><i class="fa fa-pinterest wow fadeInLeft" data-wow-duration="1.2s" data-wow-delay="1.2s"></i></a>  
-                <a href=""><i class="fa fa-rss wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="1.5s" ></i></a>  
-                <a href=""><i class="fa fa-linkedin wow fadeInLeft" data-wow-duration="1.8s" data-wow-delay="1.8s" ></i></a>  
-                <a href=""><i class="fa fa-vimeo-square wow fadeInLeft" data-wow-duration="2.1s" data-wow-delay="2.1s"></i></a>  
-                <a href=""><i class="fa fa-youtube-square wow fadeInLeft" data-wow-duration="2.3s" data-wow-delay="2.3s" ></i></a>  
-                <a href=""><i class="fa fa-dribbble wow fadeInLeft" data-wow-duration="2.6s" data-wow-delay="2.6s"></i></a>                          
-              </div> <br>
-              <div class="copyright">
-                  <p class="footerlogo">
-                      &copy; <img alt="" src="/static/home/img/logo1.png">
-                  </p>
-                  <div class="bordernow"></div>
-              </div>
-                                   
-                                                                             
-           </div>
-          
-          
-          
-      </div>
-  </div>
+								<li><a href="">Portal</a></li>
+							<li><a href="">About</a></li>
+								<li><a href="{% url 'articles:user_profile' %}"><img src="/static/images/user.png" width="25" height="27"></a></li>
+								{% if user %}
 
-</footer>
+								<li><img src="/static/images/icons8-coin-25.png"> <a href="{% url 'articles:purchasePoint' %}" style="text-decoration: none;  vertical-align: top;line-height: 0.8;
+								 font-size: 3rem; font-family: Times New Roman ">{{ user.point }}</a> </li>
+								{% endif %}
+							</ul>
+						</nav>
+						<div id="bar">
+							<i class="fas fa-bars"></i>
+						</div>
+						<div id="close">
+							<i class="fas fa-times"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- Header Close -->
 
 
-    <script src="/static/home/js/jquery.ripples-min.js" type="text/javascript"></script>  
-    <script src="/static/home/js/typed.min.js" type="text/javascript"></script>
-    <script src="/static/home/js/jquery.waypoints.min.js" type="text/javascript"></script>
-    <script src="/static/home/js/jquery.counterup.min.js" type="text/javascript"></script>           
-    <script src="/static/home/js/main.js" type="text/javascript"></script>
-    <script src="/static/home/js/smoothscroll.js" type="text/javascript"></script>
-    <script src="/static/home/js/jquery.easing.1.3.js" type="text/javascript"></script>
-    <script src="/static/home/js/wow.min.js" type="text/javascript"></script>
-</body>    
+		<section class="about-upper-section" itemprop="mainContentofPage">
+			<div class="container">
+				<article class="who-we-are">
+					<h2 class="top-heading">who we are</h2>
+					<h3><p>For the first time we started a webapp in Bangladesh. Here you can easily make questions for Examination for any classes. You can also make admit card or routine or lecture planning from here. More features coming soon....</p> </h3>
+				</article>
+				<div class="our-story">
+					<h2 class="top-heading">our story</h2>
+					<ul>
+						<li><i class="fas fa-book"></i> <a href="#">Make questions for any class</a></li>
+						<li><i class="fas fa-money-check-alt"></i> <a href="#">Make Admit Card or Routine</a></li>
+						<li><i class="fas fa-chalkboard-teacher"></i> <a href="#">Find your lecture planning</a></li>
+						<li><i class="fas fa-book"></i> <a href="#"> A potal for teahcers</a></li>
+
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="team-members" itemprop="contributor">
+			<div class="container">
+				<h2 class="top-heading">meet our team</h2>
+				<article class="top-heading">
+				        <div class="developer-wrap">
+						<img src="images/pp.jpg" alt="developer images">
+						<h3>Rifat Mahmud</h3>
+						<p>Teacher</p>
+
+					</div>
+
+
+				</article>
+			</div>
+		</section>
+		<!-- Team Members Closed  -->
 
 
 
-{% endblock %}
+		<section class="query-section">
+			<div class="container">
+				<p>Any Queries?  &nbsp;  &nbsp; &nbsp; &nbsp;  Ask us a question at<a href="tel:+8801921189005"><i class="fas fa-phone"></i> +8801921189005</a></p>
+			</div>
+		</section>
+		<!-- End of Query Section -->
+		<footer class="page-footer" itemprop="footer" itemscope itemtype="http://schema.org/WPFooter">
+			<div class="footer-first-section">
+				<div class="container">
+					<div class="box-wrap" itemprop="about">
+						<header>
+							<h1>about</h1>
+						</header>
+						<p>TosEdu a great start for our education  institute. It's very easy to use and important for teachers</p>
+
+						<h4><a href="tel:+8801921189005"><i class="fas fa-phone"></i> +8801921189005</a></h4>
+						<h4><a href="mailto:tostechllc@gmail.com"><i class="fas fa-envelope"></i> tostechllc@gmail.com</a></h4>
+						<h4><a href=""><i class="fas fa-map-marker-alt"></i>Gazipur, Dhaka, Bangladesh</a></h4>
+					</div>
+
+
+
+					<div class="box-wrap">
+						<header>
+							<h1>Recent Features</h1>
+						</header>
+						<div class="recent-course-wrap">
+							<img src="/static/images/ui2.png" alt="admit">
+							<a href=""><div class="course-name">
+								<h3>Admit Card</h3>
+								<p><span>🪙05</span> 🪙01</p>
+							</div></a>
+						</div>
+						<div class="recent-course-wrap">
+							<img src="/static/images/ui1.png" alt="rotine">
+							<a href=""><div class="course-name">
+								<h3>Routine</h3>
+								<p><span>🪙15</span> 🪙10</p>
+							</div></a>
+						</div>
+					</div>
+
+					<div class="box-wrap">
+						<header>
+							<h1>quick contact</h1>
+						</header>
+						<section class="quick-contact">
+							<input type="email" name="email" placeholder="Your Email*">
+							<textarea placeholder="Type your message*"></textarea>
+							<button>send message</button>
+						</section>
+					</div>
+
+				</div>
+			</div>
+			<!-- End of box-Wrap -->
+			<div class="footer-second-section">
+				<div class="container">
+					<hr class="footer-line">
+					<ul class="social-list">
+						<li><a href="https://www.facebook.com/nabodoyschool/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+						<li><a href=""><i class="fab fa-twitter"></i></a></li>
+						<li><a href=""><i class="fab fa-skype"></i></a></li>
+						<li><a href=""><i class="fab fa-youtube"></i></a></li>
+						<li><a href=""><i class="fab fa-instagram"></i></a></li>
+					</ul>
+					<hr class="footer-line">
+				</div>
+			</div>
+			<div class="footer-last-section">
+				<div class="container">
+					<p>Copyright 2022 &copy; tosfast.com <span> | </span> Designed and developed by Tosfast IT<a href="https://labtheme.com">....</a></p>
+				</div>
+			</div>
+		</footer>
+
+
+
+	</div>
+	<script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/lightbox.js"></script>
+	<script type="text/javascript" src="/static/js/all.js"></script>
+	<script type="text/javascript" src="/static/js/isotope.pkgd.min.js"></script>
+	<script type="text/javascript" src="/static/js/owl.carousel.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.rateyo.js"></script>
+	<!-- <script type="text/javascript" src="js/jquery.mmenu.all.js"></script> -->
+	<!-- <script type="text/javascript" src="js/jquery.meanmenu.min.js"></script> -->
+	<script type="text/javascript" src="/static/js/custom.js"></script>
+</body>
