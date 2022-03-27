@@ -2,10 +2,160 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Canvas</title>
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/static/css/all.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/lightbox.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/flexslider.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/jquery.rateyo.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mmenu.all.css" /> -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/meanmenu.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="/static/css/inner-page-style.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+
+
+
+    	<style>
+		.button {
+		  display: inline-block;
+		  padding: 15px 25px;
+		  font-size: 24px;
+		  font
+		  cursor: pointer;
+		  text-align: center;
+		  font-family:  Gill Sans MT;
+		  text-decoration: none;
+		  outline: none;
+		  color: #A5E7E2 ;
+		  background-color: #4CAF50;
+		  border: none;
+		  border-radius: 15px;
+		  box-shadow: 0 9px #999;
+		}
+
+		.button:hover {background-color: #3e8e41}
+
+		.button:active {
+		  background-color: #3e8e41;
+		  box-shadow: 0 5px #666;
+		  transform: translateY(4px);
+		}
+		</style>
+
+
+
 </head>
 <body>
+<div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
+		<header class="site-header">
+			<div class="top-header">
+				<div class="container">
+					<div class="top-header-left">
+						<div class="top-header-block">
+							<a href="mailto:tostechllc@gmail.com" itemprop="email"><i class="fas fa-envelope"></i> tostechllc@gmail.com</a>
+						</div>
+						<div class="top-header-block"><a href="tel:+8801921189005" itemprop="telephone"><i class="fas fa-phone"></i> +8801921189005</a>
+						</div>
+					</div>
+					<div class="top-header-right">
+						<div class="social-block">
+							<ul class="social-list">
+
+								<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+								<li><a href="https://www.facebook.com/fantosfast/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+								<li><a href="https://www.facebook.com/fantosfast/"target="_blank"><i class="fab fa-facebook-messenger"></i></a></li>
+								<li><a href=""><i class="fab fa-twitter"></i></a></li>
+								<li><a href=""><i class="fab fa-skype"></i></a></li>
+							</ul>
+						</div>
+						<div class="login-block">
+							{% if user %}
+							<a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                        {% csrf_token %}
+                            <button type="submit" class="cr-btn cr-btn-sm">Logout</button>
+                            </form>
+                            </a>
+							{% else %}
+							<a href="">Login /</a>
+							<a href="">Register</a>
+							{% endif %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Top header Close -->
+			<div class="main-header">
+				<div class="container">
+					<div class="logo-wrap" itemprop="logo">
+						<img src="/static/images/site-logo.png" alt="Logo Image">
+						<!-- <h1>Education header</h1> -->
+					</div>
+					<div class="nav-wrap">
+						<nav class="nav-desktop">
+							<ul class="menu-list">
+								<li><a href="{% url 'articles:list' %}" style="padding-top: 3px;">Home</a></li>
+								<li class="menu-parent">Question Maker
+									<ul class="sub-menu">
+										<li><a href="{% url 'articles:canvas' %}">Question Canvas</a></li>
+										<li><a href="{% url 'articles:lessThanSix' %}">Class Less than Six</a></li>
+										<li><a href="{% url 'articles:englishQuestions' %}">English Question</a></li>
+
+									</ul>
+								</li>
+								<li class="menu-parent">Routine & Admit
+									<ul class="sub-menu">
+										<li><a href="{% url 'articles:routine' %}">Routine</a></li>
+										<li><a href="{% url 'articles:admitCard' %}">Admit Card</a></li>
+									</ul>
+								</li>
+
+
+								<li class="menu-parent">Lecture Planning
+									<ul class="sub-menu">
+										<li><a href="">Class 1</a></li>
+										<li><a href="">Class 2</a></li>
+										<li><a href="">Class 3</a></li>
+										<li><a href="">Class 4</a></li>
+										<li><a href="">Class 5</a></li>
+									</ul>
+								</li>
+
+
+
+
+								<li><a href="">Portal</a></li>
+							<li><a href="">About</a></li>
+								<li><a href="{% url 'articles:user_profile' %}"><img src="/static/images/user.png" width="25" height="27"></a></li>
+								{% if user %}
+
+								<li><img src="/static/images/icons8-coin-25.png"> <a href="{% url 'articles:purchasePoint' %}" style="text-decoration: none;  vertical-align: top;line-height: 0.8;
+								 font-size: 3rem; font-family: Times New Roman ">{{ user.point }}</a> </li>
+								{% endif %}
+							</ul>
+						</nav>
+						<div id="bar">
+							<i class="fas fa-bars"></i>
+						</div>
+						<div id="close">
+							<i class="fas fa-times"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+</div>
+
+
+
 {% for canvass in canvass %}
+
+<div >
 <h1>Question:</h1>
 {% if canvass.ques_img %}
 <img src="{{ canvass.ques_img.url }}" alt="Error" height="200px" width="200px">
@@ -40,7 +190,19 @@
 <br>
 <br>
 <a href="{% url 'articles:classAndSubjects' %}">Add a question</a>
-<a href="{% url 'articles:questionsGenerate' %}">Print Question</a>
+
+	<div align="center">
+		<button class="button"> <a href="">Print Question</a>
+		</button>
+	</div>
+</div>
+</br>
+</br>
+</br>
+</br>
+
+
+
 </body>
 
 </html>
