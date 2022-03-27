@@ -1,0 +1,242 @@
+   <!DOCTYPE html>
+<html>
+<head>
+	<title>TosEdu Homepage</title>
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/static/css/all.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/lightbox.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/flexslider.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/jquery.rateyo.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mmenu.all.css" /> -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/meanmenu.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="/static/css/inner-page-style.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-image: url('/static/images/portalbg.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+</style>
+
+
+
+</head>
+<body>
+	<div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
+		<header class="site-header">
+			<div class="top-header">
+				<div class="container">
+					<div class="top-header-left">
+						<div class="top-header-block">
+							<a href="mailto:tostechllc@gmail.com" itemprop="email"><i class="fas fa-envelope"></i> tostechllc@gmail.com</a>
+						</div>
+						<div class="top-header-block"><a href="tel:+8801921189005" itemprop="telephone"><i class="fas fa-phone"></i> +8801921189005</a>
+						</div>
+					</div>
+					<div class="top-header-right">
+						<div class="social-block">
+							<ul class="social-list">
+
+								<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+								<li><a href="https://www.facebook.com/fantosfast/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+								<li><a href="https://www.facebook.com/fantosfast/"target="_blank"><i class="fab fa-facebook-messenger"></i></a></li>
+								<li><a href=""><i class="fab fa-twitter"></i></a></li>
+								<li><a href=""><i class="fab fa-skype"></i></a></li>
+							</ul>
+						</div>
+						<div class="login-block">
+							{% if user %}
+							<a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                        {% csrf_token %}
+                            <button type="submit" class="cr-btn cr-btn-sm">Logout</button>
+                            </form>
+                            </a>
+							{% else %}
+							<a href="">Login /</a>
+							<a href="">Register</a>
+							{% endif %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Top header Close -->
+			<div class="main-header">
+				<div class="container">
+					<div class="logo-wrap" itemprop="logo">
+						<img src="/static/images/site-logo.png" alt="Logo Image">
+						<!-- <h1>Education header</h1> -->
+					</div>
+					<div class="nav-wrap">
+						<nav class="nav-desktop">
+							<ul class="menu-list">
+								<li><a href="{% url 'articles:list' %}" style="padding-top: 3px;">Home</a></li>
+								<li class="menu-parent">Question Maker
+									<ul class="sub-menu">
+										<li><a href="{% url 'articles:canvas' %}">Question Canvas</a></li>
+										<li><a href="{% url 'articles:lessThanSix' %}">Class Less than Six</a></li>
+										<li><a href="{% url 'articles:englishQuestions' %}">English Question</a></li>
+
+									</ul>
+								</li>
+								<li class="menu-parent">Routine & Admit
+									<ul class="sub-menu">
+										<li><a href="{% url 'articles:routine' %}">Routine</a></li>
+										<li><a href="{% url 'articles:admitCard' %}">Admit Card</a></li>
+									</ul>
+								</li>
+
+
+								<li class="menu-parent">Lecture Planning
+									<ul class="sub-menu">
+										<li><a href="">Class 1</a></li>
+										<li><a href="">Class 2</a></li>
+										<li><a href="">Class 3</a></li>
+										<li><a href="">Class 4</a></li>
+										<li><a href="">Class 5</a></li>
+									</ul>
+								</li>
+
+
+
+
+								<li><a href="">Portal</a></li>
+							<li><a href="">About</a></li>
+								<li><a href="{% url 'articles:user_profile' %}"><img src="/static/images/user.png" width="25" height="27"></a></li>
+								{% if user %}
+
+								<li><img src="/static/images/icons8-coin-25.png"> <a href="{% url 'articles:purchasePoint' %}" style="text-decoration: none;  vertical-align: top;line-height: 0.8;
+								 font-size: 3rem; font-family: Times New Roman ">{{ user.point }}</a> </li>
+								{% endif %}
+							</ul>
+						</nav>
+						<div id="bar">
+							<i class="fas fa-bars"></i>
+						</div>
+						<div id="close">
+							<i class="fas fa-times"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+   	</div>
+		<!-- Header Close -->
+
+
+    </div>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+ 
+  <div class="w3-display-middle">
+    <h1 class="w3-jumbo w3-animate-top">COMING SOON</h1>
+    <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <p class="w3-large w3-center">23 days left</p>
+  </div>
+
+</div>
+
+
+		<section class="query-section">
+			<div class="container">
+				<p>Any Queries?  &nbsp;  &nbsp; &nbsp; &nbsp;  Ask us a question at<a href="tel:+8801921189005"><i class="fas fa-phone"></i> +8801921189005</a></p>
+			</div>
+		</section>
+		<!-- End of Query Section -->
+		<footer class="page-footer" itemprop="footer" itemscope itemtype="http://schema.org/WPFooter">
+			<div class="footer-first-section">
+				<div class="container">
+					<div class="box-wrap" itemprop="about">
+						<header>
+							<h1>about</h1>
+						</header>
+						<p>TosEdu a great start for our education  institute. It's very easy to use and important for teachers</p>
+
+						<h4><a href="tel:+8801921189005"><i class="fas fa-phone"></i> +8801921189005</a></h4>
+						<h4><a href="mailto:tostechllc@gmail.com"><i class="fas fa-envelope"></i> tostechllc@gmail.com</a></h4>
+						<h4><a href=""><i class="fas fa-map-marker-alt"></i>Gazipur, Dhaka, Bangladesh</a></h4>
+					</div>
+
+
+
+					<div class="box-wrap">
+						<header>
+							<h1>Recent Features</h1>
+						</header>
+						<div class="recent-course-wrap">
+							<img src="/static/images/ui2.png" alt="admit">
+							<a href=""><div class="course-name">
+								<h3>Admit Card</h3>
+								<p><span>🪙05</span> 🪙01</p>
+							</div></a>
+						</div>
+						<div class="recent-course-wrap">
+							<img src="/static/images/ui1.png" alt="rotine">
+							<a href=""><div class="course-name">
+								<h3>Routine</h3>
+								<p><span>🪙15</span> 🪙10</p>
+							</div></a>
+						</div>
+					</div>
+
+					<div class="box-wrap">
+						<header>
+							<h1>quick contact</h1>
+						</header>
+						<section class="quick-contact">
+							<input type="email" name="email" placeholder="Your Email*">
+							<textarea placeholder="Type your message*"></textarea>
+							<button>send message</button>
+						</section>
+					</div>
+
+				</div>
+			</div>
+			<!-- End of box-Wrap -->
+			<div class="footer-second-section">
+				<div class="container">
+					<hr class="footer-line">
+					<ul class="social-list">
+						<li><a href="https://www.facebook.com/nabodoyschool/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+						<li><a href=""><i class="fab fa-twitter"></i></a></li>
+						<li><a href=""><i class="fab fa-skype"></i></a></li>
+						<li><a href=""><i class="fab fa-youtube"></i></a></li>
+						<li><a href=""><i class="fab fa-instagram"></i></a></li>
+					</ul>
+					<hr class="footer-line">
+				</div>
+			</div>
+			<div class="footer-last-section">
+				<div class="container">
+					<p>Copyright 2022 &copy; tosfast.com <span> | </span> Designed and developed by Tosfast IT<a href="https://labtheme.com">....</a></p>
+				</div>
+			</div>
+		</footer>
+
+
+
+	<script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/lightbox.js"></script>
+	<script type="text/javascript" src="/static/js/all.js"></script>
+	<script type="text/javascript" src="/static/js/isotope.pkgd.min.js"></script>
+	<script type="text/javascript" src="/static/js/owl.carousel.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.rateyo.js"></script>
+	<!-- <script type="text/javascript" src="js/jquery.mmenu.all.js"></script> -->
+	<!-- <script type="text/javascript" src="js/jquery.meanmenu.min.js"></script> -->
+	<script type="text/javascript" src="/static/js/custom.js"></script>
+</body>
+</html>
