@@ -491,20 +491,12 @@ def docEnglishQuestionPage(request):
     return render(request, 'main/docQuestionPage.html', context)
 
 
-def classSugesstionChoser(request):
-    classSugesstionChoser.classInput = ""
-    classSugesstionChoser.classInput = request.POST.get('class-Input')
-    if classSugesstionChoser.classInput is not None:
-        return redirect('articles:classsuggession')
-    return render(request, 'main/clsSugCho.html')
-
-
 @login_required(login_url="/account/login/")
 def sugesstion_class(request):
     today = date.today()
     print(today.weekday())
     month, day = today.month, today.day
-    instance = class_suggesstion.objects.filter(classes=classSugesstionChoser.classInput)
+    instance = class_suggesstion.objects.filter(classes=1)
     context = {}
     context['weekday'] = 'None'
     if today.weekday() == 0:

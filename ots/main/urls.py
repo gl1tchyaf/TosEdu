@@ -44,7 +44,6 @@ urlpatterns = [
     url(r'^EnglishDocQuestionsForm/$', views.EnglishDocQuestionsform, name="EnglishDocQuestionsform"),
 
     url(r'^ClassSuggesstionForm/$', views.ClassSuggesstionform, name="ClassSuggesstionform"),
-    url(r'^classSugesstionChoser/$', views.classSugesstionChoser, name="classSugesstionChoser"),
     url(r'^classsuggession/$', views.sugesstion_class, name="classsuggession"),
 
     url(r'^admitCardGenerator/$', views.admitCard, name="admitCard"),
