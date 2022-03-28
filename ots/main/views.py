@@ -611,6 +611,12 @@ def admitCardGen(request):
     context = {'instName': admitCard.instName, 'exam': admitCard.exam, 'stdName': admitCard.stdName,
                'stdFatherName': admitCard.stdFatherName, 'stdMotherName': admitCard.stdMotherName,
                'stdClass': admitCard.stdClass, 'stdRoll': admitCard.stdRoll, 'headMaster': admitCard.headMaster}
+    userInfo = userInformation.objects.get(user=request.user)
+    if userInfo.point >= 1:
+        userInfo.point = userInfo.point - 1
+        userInfo.save()
+    else:
+        return redirect('articles:list')
     return render(request, 'main/admitCardGen.html', context)
 
 
@@ -717,10 +723,17 @@ def routine(request):
     routine.schoolName = request.POST.get('school-name')
     if routine.weekday and routine.date and routine.schoolName:
         return redirect('articles:routinePrint')
+
     return render(request, 'main/routine.html')
 
 
 def routinePrint(request):
+    userInfo = userInformation.objects.get(user=request.user)
+    if userInfo.point >= 10:
+        userInfo.point = userInfo.point - 10
+        userInfo.save()
+    else:
+        return redirect('articles:list')
     context = {'date': routine.date, 'date2': routine.date2, 'date3': routine.date3,
                'date4': routine.date4, 'date5': routine.date5, 'date6': routine.date6,
                'date7': routine.date7, 'weekday': routine.weekday,
