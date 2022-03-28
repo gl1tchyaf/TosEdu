@@ -5,9 +5,7 @@
   box-sizing: border-box;
 }
 .center {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
+
 }
 
 .db {
@@ -128,5 +126,24 @@ h1 {
 </p>
     </div>
 </div>
+
+<button id="togglee" onclick="action(),window.print(), timeFunction()">Print</button>
+<br>
+<script>
+    var hidden = false;
+    function action() {
+        hidden = !hidden;
+        if(hidden) {
+            document.getElementById('togglee').style.visibility = 'hidden';
+        } else {
+            document.getElementById('togglee').style.visibility = 'visible';
+        }
+    }
+    function timeFunction() {
+            setTimeout(function(){
+             document.getElementById('togglee').style.visibility = 'visible';
+             }, 1000);
+        }
+</script>
 </body>
 </html>

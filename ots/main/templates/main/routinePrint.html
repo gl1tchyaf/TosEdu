@@ -214,7 +214,26 @@
             <td align="center" height="50">{{ c107 }}</td>
         </tr>
     </table>
-    <button type="submit">Submit</button>
+
+
+<button id="togglee" onclick="action(),window.print(), timeFunction()">Print</button>
+<br>
+<script>
+    var hidden = false;
+    function action() {
+        hidden = !hidden;
+        if(hidden) {
+            document.getElementById('togglee').style.visibility = 'hidden';
+        } else {
+            document.getElementById('togglee').style.visibility = 'visible';
+        }
+    }
+    function timeFunction() {
+            setTimeout(function(){
+             document.getElementById('togglee').style.visibility = 'visible';
+             }, 1000);
+        }
+</script>
 </body>
 
 </html>
