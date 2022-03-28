@@ -492,11 +492,11 @@ def docEnglishQuestionPage(request):
 
 
 @login_required(login_url="/account/login/")
-def sugesstion_class(request):
+def sugesstion_class(request, pk):
     today = date.today()
     print(today.weekday())
     month, day = today.month, today.day
-    instance = class_suggesstion.objects.filter(classes=1)
+    instance = class_suggesstion.objects.filter(classes=pk)
     context = {}
     context['weekday'] = 'None'
     if today.weekday() == 0:
