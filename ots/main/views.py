@@ -744,3 +744,8 @@ def routinePrint(request):
                'c96': routine.c96, 'c97': routine.c97, 'c101': routine.c101, 'c102': routine.c102, 'c103': routine.c103,
                'c104': routine.c104, 'c105': routine.c105, 'c106': routine.c106, 'c107': routine.c107, 'schoolName': routine.schoolName}
     return render(request, 'main/routinePrint.html', context)
+
+
+@login_required(login_url="/account/login/")
+def about(request):
+    return render(request, 'main/about.html')

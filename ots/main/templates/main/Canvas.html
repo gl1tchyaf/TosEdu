@@ -130,7 +130,7 @@
 
 
 								<li><a href="">Portal</a></li>
-							<li><a href="">About</a></li>
+							<li><a href="{% url 'articles:about' %}">About</a></li>
 								<li><a href="{% url 'articles:user_profile' %}"><img src="/static/images/user.png" width="25" height="27"></a></li>
 								{% if user %}
 

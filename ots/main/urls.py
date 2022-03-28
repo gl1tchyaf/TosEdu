@@ -51,4 +51,5 @@ urlpatterns = [
 
     url(r'^routine/$', views.routine, name="routine"),
     url(r'^routinePrint/$', views.routinePrint, name="routinePrint"),
+    url(r'^about/$', views.about, name="about"),
 ]

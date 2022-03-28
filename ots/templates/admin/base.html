@@ -3,7 +3,7 @@
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}">
 <head>
 <title>{% block title %}{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/base.css" %}{% endblock %}">
 {% if not is_popup and is_nav_sidebar_enabled %}
   <link rel="stylesheet" type="text/css" href="{% static "admin/css/nav_sidebar.css" %}">
   <script src="{% static 'admin/js/nav_sidebar.js' %}" defer></script>
@@ -34,7 +34,7 @@
         </div>
         {% block usertools %}
         {% if has_permission %}
-        <div id="user-tools">
+        <div id="user-tools" style="text-align=center" >
             {% block welcome-msg %}
             <h2>{% translate 'Welcome to admin panel,' %} </h2>
                <h1> <strong>{% firstof user.get_short_name user.get_username %}</strong>.</h1>
@@ -86,7 +86,7 @@
         <!-- Content -->
         <div align="center" id="content" class="{% block coltype %}colM{% endblock %}">
           {% block pretitle %}{% endblock %}
-            <h1>Green Travel Administration</h1>
+            <h1>TosEdu Administration</h1>
           {% block content_subtitle %}{% if subtitle %}<h2>{{ subtitle }}</h2>{% endif %}{% endblock %}
           {% block content %}
             {% block object-tools %}{% endblock %}
