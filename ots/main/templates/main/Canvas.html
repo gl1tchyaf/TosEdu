@@ -49,10 +49,59 @@
 		  border-radius: 12px;
 
 		}
+		.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
 
 
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #33b5e5;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
 
+.menu li:hover {
+  background-color: #0099cc;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+
+  .col-s-3 {width: 25%;}
+  .col-s-9 {width: 75%;}
+  .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+
+  .col-3 {width: 40%;}
+
+  .col-6 {width: 60%;}
+}
 		</style>
 
 </head>
@@ -158,61 +207,85 @@
 </div>
 
 
+	<div class="row">
+  <div class="col-3 col-s-3 menu">
 
+  </div>
+		<div class="col-6 col-s-9">
+			<h1>Descriptive Questions</h1>
 {% for canvass in canvass %}
-
-<div>
 <h1>Question :</h1>
 {% if canvass.ques_img %}
 <img src="{{ canvass.ques_img.url }}" alt="Error" height="200px" width="200px">
 {% endif %}
-<h4>{{ canvass.scenario }}</h4>
-<h4>{{ canvass.q_a }}</h4>
-<h4>{{ canvass.q_b }}</h4>
-<h4>{{ canvass.q_c }}</h4>
-<h4>{{ canvass.q_d }}</h4>
-<a href="{% url 'articles:editquestion' canvass.id %}   "> Edit this question </a>  <br>
-<a href="{% url 'articles:removequestion' canvass.id %}">Remove this question </a>
+<h2>{{ canvass.scenario }}</h2>
+<h2>{{ canvass.q_a }}</h2>
+<h2>{{ canvass.q_b }}</h2>
+<h2>{{ canvass.q_c }}</h2>
+<h2>{{ canvass.q_d }}</h2>
+<a href="{% url 'articles:editquestion' canvass.id %}   " style="font-size: 1.7em;"> Edit this question </a>  <br>
+<a href="{% url 'articles:removequestion' canvass.id %}" style="font-size: 1.7em;">Remove this question </a>
 
 {% endfor %}
+			</div>
+		<div class="col-3 col-s-12">
+
+  </div>
+	</div>
 <br>
-<div align="center">
+		<div class="row">
+  <div class="col-3 col-s-3 menu">
+
+  </div>
+	<div class="col-6 col-s-9">
+		<h1>Selective Questions</h1>
 	{% for canvass1 in canvass1 %}
 <h1>Question:</h1>
 {% if canvass1.ques_img %}
 <img src="{{ canvass1.ques_img.url }}" alt="Error" height="200px" width="200px">
 {% endif %}
 
-	<h4>{{ canvass1.scenario }}</h4>
+	<h2>{{ canvass1.scenario }}</h2>
 <ul style="list-style-type:circle;">
-    <li>{{ canvass1.q_a }}</li>
-    <li>{{ canvass1.q_b }}</li>
-    <li>{{ canvass1.q_c }}</li>
-    <li>{{ canvass1.q_d }}</li>
+	<li><h2>{{ canvass1.q_a }}</h2></li>
+	<li><h2>{{ canvass1.q_b }}</h2></li>
+	<li><h2>{{ canvass1.q_c }}</h2></li>
+	<li><h2>{{ canvass1.q_d }}</h2></li>
 </ul>
-<a href="{% url 'articles:editquestionSelective' canvass1.id %}">Edit this question </a> <br>
-<a href="{% url 'articles:removequestionSelective' canvass1.id %}">Remove this question </a>
+<a href="{% url 'articles:editquestionSelective' canvass1.id %}" style="font-size: 1.7em;">Edit this question </a> <br>
+<a href="{% url 'articles:removequestionSelective' canvass1.id %}" style="font-size: 1.7em;">Remove this question </a>
 
-{% endfor %}   </div>
+{% endfor %}
+	</div>
+	<div class="col-3 col-s-12">
+
+  </div>
+			</div>
 <br>
 <br>
-<br>
 
+		<div class="row">
+  <div class="col-3 col-s-3 menu">
 
-		<div align="center">
+  </div>
+	<div class="col-6 col-s-9">
+
 		<button class="button2"> <a href="{% url 'articles:classAndSubjects' %}">Add a question</a>
 		</button>
-	</div>
-              </br>
-	<div align="center">
+              <br><br>
 		<button class="button"> <a href="{% url 'articles:questionsGenerate' %}">Print Question</a>
 		</button>
 	</div>
-</div>
-</br>
-</br>
-</br>
-</br>
+			<div class="col-3 col-s-12">
+
+  </div>
+			</div>
+
+
+<br>
+<br>
+<br>
+<br>
 
 
 
