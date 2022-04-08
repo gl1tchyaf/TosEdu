@@ -162,7 +162,7 @@
 {% for canvass in canvass %}
 
 <div>
-<h1>Question:</h1>
+<h1>Question :</h1>
 {% if canvass.ques_img %}
 <img src="{{ canvass.ques_img.url }}" alt="Error" height="200px" width="200px">
 {% endif %}
@@ -176,12 +176,14 @@
 
 {% endfor %}
 <br>
-{% for canvass1 in canvass1 %}
+<div align="center">
+	{% for canvass1 in canvass1 %}
 <h1>Question:</h1>
 {% if canvass1.ques_img %}
 <img src="{{ canvass1.ques_img.url }}" alt="Error" height="200px" width="200px">
 {% endif %}
-<h4>{{ canvass1.scenario }}</h4>
+
+	<h4>{{ canvass1.scenario }}</h4>
 <ul style="list-style-type:circle;">
     <li>{{ canvass1.q_a }}</li>
     <li>{{ canvass1.q_b }}</li>
@@ -191,7 +193,7 @@
 <a href="{% url 'articles:editquestionSelective' canvass1.id %}">Edit this question </a> <br>
 <a href="{% url 'articles:removequestionSelective' canvass1.id %}">Remove this question </a>
 
-{% endfor %}
+{% endfor %}   </div>
 <br>
 <br>
 <br>
