@@ -23,31 +23,37 @@
     	<style>
 		.button {
 		  display: inline-block;
-		  padding: 15px 25px;
+		  padding: 14px 25px;
 		  font-size: 24px;
-		  font
 		  cursor: pointer;
 		  text-align: center;
 		  font-family:  Gill Sans MT;
 		  text-decoration: none;
 		  outline: none;
-		  color: #A5E7E2 ;
-		  background-color: #4CAF50;
+		  background-color: #;
 		  border: none;
-		  border-radius: 15px;
-		  box-shadow: 0 9px #999;
+		  border-radius: 12px;
+
+		}
+		.button2 {
+		  display: inline-block;
+		  padding: 12px 24px;
+		  font-size: 22px;
+		  cursor: pointer;
+		  text-align: center;
+		  font-family:  Gill Sans MT;
+		  text-decoration: none;
+		  outline: none;
+		  background-color: #;
+		  border: none;
+		  border-radius: 12px;
+
 		}
 
-		.button:hover {background-color: #3e8e41}
 
-		.button:active {
-		  background-color: #3e8e41;
-		  box-shadow: 0 5px #666;
-		  transform: translateY(4px);
-		}
+
+
 		</style>
-
-
 
 </head>
 <body>
@@ -132,7 +138,7 @@
 								<li><a href="">Portal</a></li>
 							<li><a href="{% url 'articles:about' %}">About</a></li>
 								<li><a href="{% url 'articles:user_profile' %}"><img src="/static/images/user.png" width="25" height="27"></a></li>
-								{% if user %}
+									{% if user %}
 
 								<li><img src="/static/images/icons8-coin-25.png"> <a href="{% url 'articles:purchasePoint' %}" style="text-decoration: none;  vertical-align: top;line-height: 0.8;
 								 font-size: 3rem; font-family: Times New Roman ">{{ user.point }}</a> </li>
@@ -155,7 +161,7 @@
 
 {% for canvass in canvass %}
 
-<div >
+<div>
 <h1>Question:</h1>
 {% if canvass.ques_img %}
 <img src="{{ canvass.ques_img.url }}" alt="Error" height="200px" width="200px">
@@ -165,7 +171,7 @@
 <h4>{{ canvass.q_b }}</h4>
 <h4>{{ canvass.q_c }}</h4>
 <h4>{{ canvass.q_d }}</h4>
-<a href="{% url 'articles:editquestion' canvass.id %}">Edit this question </a> <br>
+<a href="{% url 'articles:editquestion' canvass.id %}   "> Edit this question </a>  <br>
 <a href="{% url 'articles:removequestion' canvass.id %}">Remove this question </a>
 
 {% endfor %}
@@ -189,8 +195,13 @@
 <br>
 <br>
 <br>
-<a href="{% url 'articles:classAndSubjects' %}">Add a question</a>
 
+
+		<div align="center">
+		<button class="button2"> <a href="{% url 'articles:classAndSubjects' %}">Add a question</a>
+		</button>
+	</div>
+              </br>
 	<div align="center">
 		<button class="button"> <a href="{% url 'articles:questionsGenerate' %}">Print Question</a>
 		</button>
